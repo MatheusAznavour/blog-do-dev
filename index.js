@@ -3,6 +3,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require("path");
 const session = require("express-session");
+const pool = require("./db/conn");
 
 const app = express();
 
@@ -25,3 +26,5 @@ app.use(session({
         maxAge: 1000 * 60 * 60,
     },
 }));
+
+app.listen(3000);
