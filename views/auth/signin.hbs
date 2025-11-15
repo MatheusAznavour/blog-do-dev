@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Sign in</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/signin" method="post">
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Username</label>
+                            <input name="user_name" value="mthwColle"
+                            required type="text" class="form-control" id="password" placeholder="Enter your desired username">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input name="user_email" value="mathw@lins"
+                            required type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                    
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input name="user_password" value="myPasscode123"
+                            required type="password" class="form-control" id="password" placeholder="Type your password">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input name="user_password_again" value="myPasscode123"
+                            required type="password" class="form-control" id="password" placeholder="Type your password again">
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

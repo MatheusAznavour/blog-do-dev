@@ -7,6 +7,8 @@ const pool = require("./db/conn");
 
 const app = express();
 
+const authRouter = require("./routes/authRouter"); 
+
 app.engine("hbs", exphbs.engine({extname: ".hbs"}));
 app.set("view engine", "hbs");
 
@@ -26,5 +28,7 @@ app.use(session({
         maxAge: 1000 * 60 * 60,
     },
 }));
+
+app.use("/", authRouter);
 
 app.listen(3000);
