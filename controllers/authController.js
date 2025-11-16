@@ -1,4 +1,5 @@
 const authHelper = require("./../helpers/authHelper");
+const validator = require("./../helpers/validatorHelper")
 
 function sigin(req, res){
     res.render("auth/signin");
@@ -6,7 +7,7 @@ function sigin(req, res){
 
 function siginForm(req, res){
     const { user_name, user_email, user_password, user_password_again } = req.body;
-    authHelper.validateSigninInput(user_name, user_email, user_password, user_password_again);
+    validator.isEmpty("2")
 
     res.redirect("/signin");
 };
