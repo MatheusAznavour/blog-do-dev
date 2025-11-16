@@ -7,8 +7,14 @@ function sigin(req, res){
 function siginForm(req, res){
     const { user_name, user_email, user_password, user_password_again } = req.body;
     
-    console.log(authHelper.validateSigninInput({user_name, user_email, user_password, user_password_again}))
-
+    //console.log(authHelper.validateSigninInput({user_name, user_email, user_password, user_password_again}))
+    const isValid = authHelper.validateSigninInput({user_name, user_email, user_password, user_password_again})
+    if(!isValid){
+        console.log("FALSEEEE");
+        res.render("auth/signin", {error: ["Form data send format is invalid!"]});
+        return;
+    };
+    console.log("TRUEEEE");
     res.redirect("/signin");
 };
 
