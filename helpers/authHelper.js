@@ -4,10 +4,10 @@ function validateSigninInput(...args){
     const data = args[0];
 
     const rules = {
-        user_name: "required|string|min:3|max:50",
+        user_name: "required|string|min:3|max:20",
         user_email: "required|email",
-        user_password: "required|string|min:3|max:50",
-        user_password_again: "required|string|min:3|max:50",
+        user_password: "required|string|min:3|max:25",
+        user_password_again: "required|string|min:3|max:25",
     };
     
     const validation = new validator(data, rules);
