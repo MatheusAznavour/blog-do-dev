@@ -1,31 +1,26 @@
+const validator = require("validatorjs");
+
 function validateSigninInput(...args){
-    for(let i = 0; i < args.length; i++){
-        if(!args[i]){
-            console.log("A field is empty!!");
-            return false;
-        }
-    }
-    const email = args[1]
+    const data = args[0];
 
-    console.log(args, email)
+    const rules = {
+        user_name: "required|string|min:3|max:50",
+        user_email: "required|email",
+        user_password: "required|string|min:3|max:50",
+        user_password_again: "required|string|min:3|max:50",
+    };
+    
+    const validation = new validator(data, rules);
 
-};
-
-function isEmpty(content, min, max){
-    if(!content){
-        console.log("Content was not provided!")
-        return false;
-    }
-    if(content.length < min){
-        console.log("Content is too short!");
+    if(data.user_password != data.user_password_again){
         return false;
     };
-    if(content.length > max){
-        console.log("Content is too big!");
+    if(validation.fails()){
+        console.log("Validation failled!", validation.errors.all());
         return false;
+    } else {
+        return true;     
     };
-    return true;
 };
 
-
-module.exports = {validateSigninInput, isEmpty};
+module.exports = { validateSigninInput };
