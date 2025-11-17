@@ -1,13 +1,10 @@
 const bcrypt = require("bcrypt");
+const Users = require("./../models/Users");
 
 async function createUser(username, email, password) {
     
-    bcrypt.hash(password, 10, (err, hash)=>{
-        if(err){return console.log("Error hashing the password: ", err)};
-
-        console.log(hash);
-    })
-
+    const hashPassword = await bcrypt.hash(password, 10);
+    await Users.signinInsert(username, email, hashPassword);
 };
 
 module.exports = { createUser };
