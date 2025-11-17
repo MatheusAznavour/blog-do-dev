@@ -3,6 +3,8 @@ function createArticle(req, res){
 }
 
 function createArticleForm(req, res){
+    const { content } = req.body;
+    console.log(content) //work from here
 
 }
 

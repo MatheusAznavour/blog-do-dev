@@ -31,6 +31,6 @@ app.use(session({
 }));
 
 app.use("/", authRouter);
-app.use("/posts/", articleRouter);
+app.use("/posts", articleRouter);
 
 app.listen(3000);
