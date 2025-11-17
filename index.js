@@ -7,7 +7,8 @@ const pool = require("./db/conn");
 
 const app = express();
 
-const authRouter = require("./routes/authRouter"); 
+const authRouter = require("./routes/authRouter");
+const articleRouter = require("./routes/posts/articleRouter"); 
 
 app.engine("hbs", exphbs.engine({extname: ".hbs"}));
 app.set("view engine", "hbs");
@@ -30,5 +31,6 @@ app.use(session({
 }));
 
 app.use("/", authRouter);
+app.use("/posts/", articleRouter);
 
 app.listen(3000);
