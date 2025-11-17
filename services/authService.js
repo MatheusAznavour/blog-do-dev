@@ -30,6 +30,13 @@ async function createSession(req, email) {
     req.session.user = {
         userId: idNormalized
     };
-}
+};
 
-module.exports = { createUser, validateUser, createSession };
+function destroySession(req){
+    req.session.destroy((err) =>{
+        if(err){return console.log("cannot access session here: ", err)};
+        res.redirect("/");
+    });
+};
+
+module.exports = { createUser, validateUser, createSession, destroySession };

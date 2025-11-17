@@ -41,7 +41,7 @@ async function loginForm(req, res){
 // 
 
 function logout(req, res){
-
+    authService.destroySession();
 };
 
 module.exports = {
