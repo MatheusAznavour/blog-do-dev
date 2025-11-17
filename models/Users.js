@@ -6,4 +6,11 @@ async function signinInsert(username, email, password) {
     return rows;
 };
 
-module.exports = { signinInsert };
+//  Get queryes
+async function selectPasswordByEmail(email) {
+    const query = `SELECT password FROM users WHERE email=?;`;
+    const [rows] = await pool.query(query, [email]);
+    return rows;
+};
+
+module.exports = { signinInsert, selectPasswordByEmail };

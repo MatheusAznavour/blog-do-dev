@@ -7,4 +7,24 @@ async function createUser(username, email, password) {
     await Users.signinInsert(username, email, hashPassword);
 };
 
-module.exports = { createUser };
+async function validateUser(email, password) {
+    const hashedPassword = await Users.selectPasswordByEmail(email);
+
+    if(hashedPassword.length == 0){
+        return false;
+    }
+    
+    const match = await bcrypt.compare(password, hashedPassword[0].password);
+
+    if(match){
+        return true;
+    }
+
+    return false;
+};
+
+async function createSession(params) {
+    
+}
+
+module.exports = { createUser, validateUser };

@@ -22,21 +22,28 @@ async function signinForm(req, res){
 // 
 
 function login(req, res){
-
+    res.render("auth/login");
 };
 
-function loginForm(req, res){
+async function loginForm(req, res){
+    const { user_email, user_password } = req.body;
+    const isValid = await authService.validateUser(user_email, user_password);
 
+    if(!isValid){
+        console.log("TRUE OR FALSE???",isValid)
+        return res.render("auth/login", {error: ["Invalid credentials!"]});
+    }
+    res.redirect("/login");
 };
 
 // 
 
-function logoutForm(req, res){
+function logout(req, res){
 
 };
 
 module.exports = {
     signin, signinForm,
     login, loginForm,
-    logoutForm,
+    logout,
 };

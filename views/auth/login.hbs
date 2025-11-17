@@ -1,0 +1,40 @@
+<div class="container">
+
+
+    {{#if error}}
+        <div class="alert alert-danger" role="alert">
+        {{#each error}}
+            {{this}}
+        {{/each}}
+        </div>
+    {{/if}}
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Log in</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/login" method="post">
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input name="user_email"
+                            required type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                    
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input name="user_password"
+                            required type="password" class="form-control" id="password" placeholder="Type your password">
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
