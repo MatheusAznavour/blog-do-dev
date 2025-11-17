@@ -1,11 +1,11 @@
 const authHelper = require("./../helpers/authHelper");
 const authService = require("./../services/authService");
 
-function sigin(req, res){
+function signin(req, res){
     res.render("auth/signin");
 };
 
-async function siginForm(req, res){
+async function signinForm(req, res){
     const { user_name, user_email, user_password, user_password_again } = req.body;
     
     const isValid = authHelper.validateSigninInput({user_name, user_email, user_password, user_password_again})
@@ -36,7 +36,7 @@ function logoutForm(req, res){
 };
 
 module.exports = {
-    sigin, siginForm,
+    signin, signinForm,
     login, loginForm,
     logoutForm,
 };
