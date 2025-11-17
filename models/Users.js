@@ -8,9 +8,11 @@ async function signinInsert(username, email, password) {
 
 //  Get queryes
 async function selectPasswordByEmail(email) {
-    const query = `SELECT password FROM users WHERE email=?;`;
+    const query = `SELECT password, id FROM users WHERE email=?;`;
     const [rows] = await pool.query(query, [email]);
     return rows;
 };
+
+// By id
 
 module.exports = { signinInsert, selectPasswordByEmail };

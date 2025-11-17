@@ -23,8 +23,13 @@ async function validateUser(email, password) {
     return false;
 };
 
-async function createSession(params) {
-    
+async function createSession(req, email) {
+    const id = await Users.selectPasswordByEmail(email);
+    const idNormalized = id[0].id;
+
+    req.session.user = {
+        userId: idNormalized
+    };
 }
 
-module.exports = { createUser, validateUser };
+module.exports = { createUser, validateUser, createSession };

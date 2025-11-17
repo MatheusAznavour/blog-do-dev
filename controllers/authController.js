@@ -33,6 +33,8 @@ async function loginForm(req, res){
         console.log("TRUE OR FALSE???",isValid)
         return res.render("auth/login", {error: ["Invalid credentials!"]});
     }
+
+    await authService.createSession(req, user_email);
     res.redirect("/login");
 };
 
