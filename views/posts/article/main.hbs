@@ -1,0 +1,13 @@
+<div class="container">
+
+    {{#if error}}
+        <div class="alert alert-danger" role="alert">
+        {{#each error}}
+            {{this}}
+        {{/each}}
+        </div>
+    {{/if}}
+
+    <h2 class="text-center">Article</h2>
+
+</div>

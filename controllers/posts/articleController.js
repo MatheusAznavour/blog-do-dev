@@ -1,6 +1,17 @@
 const articleService = require("./../../services/posts/articleService");
 const articleHelper = require("./../../helpers/posts/articleHelper");
 
+async function article(req, res) {
+    const { id, slug } = req.params;
+
+    const article = await articleService.getArticle(id);
+    if(!article){
+        res.render("posts/article/main", {error: ["post not found!"]})
+    }
+    console.log(article)
+    res.render("posts/article/main");
+};
+
 function createArticle(req, res){
     res.render("posts/article/create");
 }
@@ -20,4 +31,5 @@ async function createArticleForm(req, res){
 
 module.exports = {
     createArticle, createArticleForm,
+    article,
 };

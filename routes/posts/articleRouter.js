@@ -3,7 +3,7 @@ const router = express.Router();
 const articleController = require("./../../controllers/posts/articleController");
 
 
-router.get("/article/:id/:slug", ()=>{});
+router.get("/article/:id/:slug", articleController.article);
 
 router.get("/article/create", articleController.createArticle);
 router.post("/article/create", articleController.createArticleForm);
