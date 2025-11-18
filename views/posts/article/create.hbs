@@ -1,17 +1,10 @@
-
 <div class="container">
     <h1>Create your own article :)</h1>
     
-    <form action="/posts/article/create" method="POST">
-        <label for="content">Conteúdo:</label>
-        <!-- A div onde o Quill será inicializado -->
-        <div id="editor-container" style="height: 300px;"></div>
-    
-        <!-- Campo oculto que será preenchido com o conteúdo do Quill -->
-        <input type="hidden" name="content" id="content">
-    
-        <br><br>
-    
+    <form method="post" action="/posts/article/create">
+        <textarea id="mytextarea" name="content">Hello, World!</textarea>
         <button type="submit" class="btn btn-primary">Post</button>
     </form>
 </div>
+
+
