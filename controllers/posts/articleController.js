@@ -8,7 +8,7 @@ async function article(req, res) {
     if(!article){
         res.render("posts/article/main", {error: ["post not found!"]})
     }
-    console.log(article)
+    console.log(article);
     res.render("posts/article/main");
 };
 
