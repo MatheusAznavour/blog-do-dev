@@ -1,14 +1,13 @@
 const slugify = require("slugify");
 const sanitizer = require("sanitize-html");
-const articleHelper = require("./../../helpers/posts/articleHelper");
+const Article = require("./../../models/posts/Article");
 
-async function createArticle(title, htmlContent){
-    
+async function createArticle(title, htmlContent, opId){
     const cleanHtmlContent = sanitizer(htmlContent);
-
-    console.log("CLEANED", cleanHtmlContent)
-
     const slugTitle = slugify(title);
+
+    console.log("ORIGINAL POSTER: ", opId)
+    await Article.insertPost(opId, title, slugTitle, cleanHtmlContent);
     //console.log(slugTitle);
 };
 

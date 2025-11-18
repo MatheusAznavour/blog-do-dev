@@ -5,15 +5,16 @@ function createArticle(req, res){
     res.render("posts/article/create");
 }
 
-function createArticleForm(req, res){
+async function createArticleForm(req, res){
     const { title, content } = req.body;
+    const opId = req.session.user.userId;
     const isValid = articleHelper.validateArticleInput(title, content);
-    console.log(isValid)
     if(!isValid){
         return res.render("posts/article/create", {error: ["Invalid input credentials"]});
     };
 
-    articleService.createArticle(title, content)
+    await articleService.createArticle(title, content, opId);
+
     res.redirect("/posts/article/create")
 }
 

@@ -3,3 +3,7 @@ INSERT INTO users (username, email, password)
 
 INSERT INTO roles (name, users_id) 
     VALUES ("admin", 1);
+
+-- article example
+INSERT INTO articles (title, slug, content, users_id) 
+    VALUES ("My first article!", "My-first-article!", "<p>This is a paragraph</p>", 1);
