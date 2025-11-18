@@ -9,7 +9,7 @@ async function article(req, res) {
         res.render("posts/article/main", {error: ["post not found!"]})
     }
     console.log(article);
-    res.render("posts/article/main");
+    res.render("posts/article/main", {article});
 };
 
 function createArticle(req, res){

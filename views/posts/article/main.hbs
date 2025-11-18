@@ -8,6 +8,47 @@
         </div>
     {{/if}}
 
-    <h2 class="text-center">Article</h2>
+    {{#each article}}
+        <div class="container mt-5 ">
+            <!-- Post Header -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="display-4">{{ this.title }}</h1>
+                    <!--<p><small><i>Publicado em: {{ this.slug }}</i></small></p>-->
+                </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="lead">Por <strong>{{ this.op_name }}</strong></p>
+                            <p><small><i>Criado em: {{ this.created_at }}</i></small></p>
+                        </div>
+            </div>
+
+            <!-- Post Content -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content bg-white p-4 shadow-sm rounded">
+                        <div>{{{ this.content }}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Footer -->
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="text-muted">Curtidas: {{ this.likes_count }} </span>
+                            <strong>0</strong>
+                        </div>
+                        <div>
+                            <img src="{{  'https://via.placeholder.com/30'}}" alt="Autor" class="rounded-circle" width="30"
+                                height="30">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+
 
 </div>
+

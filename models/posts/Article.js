@@ -13,7 +13,8 @@ async function selectPost(id) {
 	a.title, 
     a.slug, 
     a.content, 
-    a.likes_count, 
+    a.likes_count,
+    LEFT(a.created_at, 10) as created_at,
     u.id as op_id, 
     u.username as op_name, 
     u.image_link as op_img_link 
