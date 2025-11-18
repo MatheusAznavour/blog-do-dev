@@ -30,7 +30,6 @@ async function loginForm(req, res){
     const isValid = await authService.validateUser(user_email, user_password);
 
     if(!isValid){
-        console.log("TRUE OR FALSE???",isValid)
         return res.render("auth/login", {error: ["Invalid credentials!"]});
     }
 
