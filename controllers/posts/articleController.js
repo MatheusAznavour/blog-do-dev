@@ -6,7 +6,7 @@ async function article(req, res) {
 
     const article = await articleService.getArticle(id);
     if(!article){
-        res.render("posts/article/main", {error: ["post not found!"]})
+        return res.render("posts/article/main", {error: ["post not found!"]})
     }
     console.log(article);
     res.render("posts/article/main", {article});
