@@ -14,6 +14,7 @@ async function createProjectForm(req, res){
         is_done,
         description
     } = req.body;
+    const opId = req.session.user.userId;
 
     const isValid = projectHelper.validateProjectInput(title, description, repository_link, deployed_link, is_done, 4);
     if(!isValid.success){
@@ -26,12 +27,9 @@ async function createProjectForm(req, res){
         };
         console.log(result.secure_url);
         const url = result.secure_url;
-        await projectService.createProject(title, description, repository_link, deployed_link, is_done, url, 3);
+        await projectService.createProject(title, description, repository_link, deployed_link, is_done, url, opId);
     });
 
-
-    //await projectService.createProject(title, description, repository_link, deployed_link, is_done, "https://image", 4);
-    //console.log("###", title, repository_link, deployed_link, is_done, description);
     res.redirect("/posts/project/create");
 };
 
