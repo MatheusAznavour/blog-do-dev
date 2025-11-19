@@ -7,7 +7,6 @@ async function project(req, res) {
     const project = await projectService.getProject(id);
     pj_is_done = "";
     if(project[0].is_done == 1){pj_is_done = true} else {pj_is_done = false};
-    console.log(project)
     res.render("posts/project/home", { project, pj_is_done });
 };
 
