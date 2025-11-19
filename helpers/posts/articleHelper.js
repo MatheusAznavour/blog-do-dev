@@ -13,9 +13,9 @@ function validateArticleInput(title, htmlContent){
     const validation = new validator(data, rules);
     if(validation.fails()){
         console.log("Validation failled!", validation.errors.all());
-        return false;
+        return { success: false, error: validation.errors.all() };
     };
-    return true;
+    return { success: true};
 };
 
 module.exports = { validateArticleInput };
