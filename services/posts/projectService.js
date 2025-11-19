@@ -6,4 +6,9 @@ async function createProject(title, description, repository_link, deployed_link,
     await Project.insertProject(title, slugTitle, description, repository_link, deployed_link, is_done, image_link, users_id);
 };
 
-module.exports = { createProject }
+async function getProject(id) {
+    const project = await Project.selecProject(id);
+    return project;
+};
+
+module.exports = { createProject, getProject }

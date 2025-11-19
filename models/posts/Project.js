@@ -9,4 +9,28 @@ async function insertProject(title, slug, description, repository_link, deployed
     return rows;
 };
 
-module.exports = { insertProject };
+async function selecProject(id) {
+    const query = `
+    SELECT 
+	p.id,
+    p.title,
+    p.slug,
+    p.description,
+    p.repository_link,
+    p.deployed_link,
+    p.is_done,
+    p.image_link as project_image,
+    p.likes_count,
+	LEFT(p.created_at, 10) as created_at,
+	u.id as op_id,
+    u.username as op_name,
+    u.image_link as op_img_link
+	FROM projects p
+	INNER JOIN users u
+    ON p.users_id=u.id WHERE p.id=?;
+    `;
+    const [rows] = await pool.query(query, [id]);
+    return rows;
+}
+
+module.exports = { insertProject, selecProject };

@@ -2,9 +2,16 @@ const cloudinary = require("./../../middleware/config/cloudinaryConfig");
 const projectService = require("./../../services/posts/projectService");
 const projectHelper = require("./../../helpers/posts/projectHelper");
 
+async function project(req, res) {
+    const { id, slug } = req.params
+    const project = await projectService.getProject(id);
+    console.log(project)
+    res.render("posts/project/home", { project });
+};
+
 function createProject(req, res){
     res.render("posts/project/create");
-}
+};
 
 async function createProjectForm(req, res){
     const {
@@ -34,5 +41,6 @@ async function createProjectForm(req, res){
 };
 
 module.exports = {
+    project,
     createProject, createProjectForm,
 };

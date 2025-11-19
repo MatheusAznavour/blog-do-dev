@@ -22,7 +22,7 @@
                         <label for="titulo" class="form-label">Project title</label>
                         <input name="title"
                         required type="text" class="form-control" id="titulo do projeto"
-                            placeholder="Project title" value="titulo">
+                            placeholder="Project title">
                     </div>
     
                     <div class="row">
@@ -30,21 +30,21 @@
                             <label for="input1">Github link</label>
                             <input name="repository_link" 
                             required type="text" class="form-control" id="input1"
-                                placeholder="https://github.com/your-name/project-name" value="https://github.com/your-name/project-name">
+                                placeholder="https://github.com/your-name/project-name">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="input2">Site link (optional)</label>
                             <input name="deployed_link" 
-                            type="text" class="form-control" id="input2" placeholder="deploy link" value="https://vercel.io/project-name">
+                            type="text" class="form-control" id="input2" placeholder="deploy link">
                         </div>
                     </div>
     
                     <div class="mb-3">
-                        <label for="situacao" class="form-label">Situação do projeto:</label>
+                        <label for="situacao" class="form-label">Project state:</label>
                         <select name="is_done"
                         class="form-select" id="situacao">
-                            <option selected value="0">Em desenvolvimento</option>
-                            <option value="1">concluido</option>
+                            <option selected value="0">In development</option>
+                            <option value="1">finished</option>
                             <!-- Outras opções podem ser adicionadas aqui -->
                         </select>
                     </div>
@@ -56,9 +56,9 @@
                     </div>
     
                     <div class="mb-3">
-                        <label for="resumo" class="form-label">Resumo do projeto:</label>
+                        <label for="resumo" class="form-label">Project overview:</label>
                         <textarea name="description" 
-                        class="form-control" id="resumo" rows="4" placeholder="Resumo do projeto">A pretty cool project resume</textarea>
+                        class="form-control" id="resumo" rows="4" placeholder="Project overview"></textarea>
                     </div>
     
                     <button type="submit" class="btn btn-primary">Postar</button>
