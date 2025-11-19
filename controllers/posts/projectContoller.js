@@ -20,17 +20,18 @@ async function createProjectForm(req, res){
         return res.render("posts/project/create", {error: isValid.error});
     }
 
-    /*
-    cloudinary.uploader.upload(req.file.path, (err, result)=>{
+    cloudinary.uploader.upload(req.file.path, async (err, result)=>{
         if(err){
             return console.log(err);
         };
-        console.log(result);
+        console.log(result.secure_url);
+        const url = result.secure_url;
+        await projectService.createProject(title, description, repository_link, deployed_link, is_done, url, 3);
     });
-    */
 
-    const createProject = projectService.createProject(title, description, repository_link, deployed_link, is_done, "https://image", 4);
-    console.log("###", title, repository_link, deployed_link, is_done, description);
+
+    //await projectService.createProject(title, description, repository_link, deployed_link, is_done, "https://image", 4);
+    //console.log("###", title, repository_link, deployed_link, is_done, description);
     res.redirect("/posts/project/create");
 };
 

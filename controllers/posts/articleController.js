@@ -23,11 +23,7 @@ async function createArticleForm(req, res){
     if(!isValid.success){
         return res.render("posts/article/create", {error: isValid.error});
     }
-    
     await articleService.createArticle(title, content, opId);
-
-
-
 
     res.redirect("/posts/article/create")
 }
