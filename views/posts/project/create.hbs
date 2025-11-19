@@ -1,6 +1,4 @@
 <div class="container">
-
-
     {{#if error}}
         <div class="alert alert-danger" role="alert">
         {{#each error}}
@@ -9,63 +7,68 @@
         </div>
     {{/if}}
 
-                <div class="card-header text-black content-center">
-                    <h4 class="mb-0">Show us your project!</h4>
-                </div>
-
 
     <div class="container mt-4">
+
+        <div class="card-header text-black content-center">
+            <h4 class="text-center">Show us your project!</h4>
+        </div>
+
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 <form method="post" action="/posts/project/create" enctype="multipart/form-data">
-
+    
                     <div class="mb-3">
                         <label for="titulo" class="form-label">Project title</label>
-                        <input
-                        required type="text" class="form-control" id="titulo" placeholder="Título do projeto" value="titulo">
+                        <input name="title"
+                        required type="text" class="form-control" id="titulo do projeto"
+                            placeholder="Project title" value="titulo">
                     </div>
-
+    
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="input1">Github link</label>
-                            <input
-                            required type="text" class="form-control" id="input1" placeholder="https://github.com/your-name/project-name" value="titulo">
+                            <input name="repository_link" 
+                            required type="text" class="form-control" id="input1"
+                                placeholder="https://github.com/your-name/project-name" value="https://github.com/your-name/project-name">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="input2">Site link (optional)</label>
-                            <input
-                            type="text" class="form-control" id="input2" placeholder="deploy link">
+                            <input name="deployed_link" 
+                            type="text" class="form-control" id="input2" placeholder="deploy link" value="https://vercel.io/project-name">
                         </div>
                     </div>
-
+    
                     <div class="mb-3">
                         <label for="situacao" class="form-label">Situação do projeto:</label>
-                        <select class="form-select" id="situacao">
-                            <option selected>Em desenvolvimento</option>
-                            <option>concluido</option>
+                        <select name="is_done"
+                        class="form-select" id="situacao">
+                            <option selected value="0">Em desenvolvimento</option>
+                            <option value="1">concluido</option>
                             <!-- Outras opções podem ser adicionadas aqui -->
                         </select>
                     </div>
-
+    
                     <div class="mb-3">
                         <label for="imagem" class="form-label">Imagem:</label>
-                        <input name="image"
+                        <input name="image" 
                         class="form-control" type="file" id="imagem">
                     </div>
-
+    
                     <div class="mb-3">
                         <label for="resumo" class="form-label">Resumo do projeto:</label>
-                        <textarea class="form-control" id="resumo" rows="4" placeholder="Resumo do projeto"></textarea>
+                        <textarea name="description" 
+                        class="form-control" id="resumo" rows="4" placeholder="Resumo do projeto">A pretty cool project resume</textarea>
                     </div>
-
+    
                     <button type="submit" class="btn btn-primary">Postar</button>
-
+    
                 </form>
             </div>
         </div>
-
-
-        
+    
+    
+    
     </div>
 
 
