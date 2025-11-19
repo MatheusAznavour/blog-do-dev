@@ -9,6 +9,7 @@ const app = express();
 
 const authRouter = require("./routes/authRouter");
 const articleRouter = require("./routes/posts/articleRouter"); 
+const projectRouter = require("./routes/posts/projectRouter");
 
 app.engine("hbs", exphbs.engine({extname: ".hbs"}));
 app.set("view engine", "hbs");
@@ -32,5 +33,6 @@ app.use(session({
 
 app.use("/", authRouter);
 app.use("/posts", articleRouter);
+app.use("/posts", projectRouter);
 
 app.listen(3000);
