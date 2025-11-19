@@ -15,6 +15,11 @@ async function createProjectForm(req, res){
         description
     } = req.body;
 
+    const isValid = projectHelper.validateProjectInput(title, description, repository_link, deployed_link, is_done, 4);
+    if(!isValid.success){
+        return res.render("posts/project/create", {error: isValid.error});
+    }
+
     /*
     cloudinary.uploader.upload(req.file.path, (err, result)=>{
         if(err){
@@ -25,11 +30,6 @@ async function createProjectForm(req, res){
     */
 
     const createProject = projectService.createProject(title, description, repository_link, deployed_link, is_done, "https://image", 4);
-    const isValid = projectHelper.validateProjectInput(title, description, repository_link, deployed_link, is_done, "https://image", 4);
-    if(!isValid){
-        console.log("falhouuu");
-        return res.render("posts/project/create", {error: ["invalid credential!"]});
-    }
     console.log("###", title, repository_link, deployed_link, is_done, description);
     res.redirect("/posts/project/create");
 };
