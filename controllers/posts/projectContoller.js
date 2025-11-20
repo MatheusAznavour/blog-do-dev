@@ -3,11 +3,13 @@ const projectService = require("./../../services/posts/projectService");
 const projectHelper = require("./../../helpers/posts/projectHelper");
 
 async function project(req, res) {
-    const { id, slug } = req.params
+    const id = req.params.id || 0
     const project = await projectService.getProject(id);
     pj_is_done = "";
+    if(project.length === 0 ){
+        return res.render("posts/project/home", { error: ["Could not find a project"] });
+    }
     if(project[0].is_done == 1){pj_is_done = true} else {pj_is_done = false};
-    console.log(project)
     res.render("posts/project/home", { project, pj_is_done });
 };
 
