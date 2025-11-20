@@ -47,3 +47,66 @@
     </div>
 
 {{/each}}
+
+
+{{#each projects}}
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+
+
+            <!-- Post Header -->
+            <div class="row">
+                <div class="col-md-12"></div>
+                <div class="content bg-white p-4 shadow-sm rounded">
+                    <div class="row">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="lead"><img src="{{this.op_image_link}}" class="img-thumbnail" width="40" height="40"> Por
+                                <strong>{{this.op_username }}</strong></p>
+                            <p><small><i>Publish in: {{ this.created_at }}</i></small></p>
+                        </div>
+                    </div>
+
+
+
+
+                    {{#if pj_is_done }}
+                        <small><i>Concluido</i></small>
+                    {{else}}
+                        <small><i>Em progresso</i></small>
+                    {{/if}}
+
+
+                    <h2 class="display-8">{{ this.title }}</h2>
+
+                    <p> <i class="bi bi-github"></i> <a class="link-opacity-75" href="#">{{ repository_link }}</a></p>
+                    {{#if deployed_link}}
+                    <p> <i class="bi bi-globe"></i> <a class="link-opacity-75" href="#">{{ deployed_link }}</a></p>
+                    {{/if}}
+
+                    <div>{{{ this.description }}}</div>
+                    <div><img src="{{this.image_link}}" class="img-fluid"></div>
+
+                    <!-- Post Footer -->
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-muted">Likes: {{ this.likes_count }} </span>
+                                    <strong>0</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+{{/each}}

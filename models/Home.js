@@ -21,8 +21,29 @@ async function selectArticle(limit, offset){
     return rows;
 };
 
-async function selectProject(params) {
-    
+async function selectProject(limit, offset){
+    const query = `
+    SELECT
+	p.id,
+    p.title,
+    p.slug,
+    p.description,
+    p.repository_link,
+    p.deployed_link,
+    p.is_done,
+    p.image_link,
+    p.likes_count,
+    LEFT(p.created_at, 10) as created_at,
+    u.id as op_id,
+    u.username as op_username,
+    u.image_link as op_image_link
+	FROM projects p
+	INNER JOIN users u ON p.users_id=u.id
+    ORDER BY p.id DESC
+    LIMIT ? OFFSET ?;
+    `;
+    const [rows] = await pool.query(query, [limit, offset]);
+    return rows;
 };
 
 module.exports = { selectArticle, selectProject };
