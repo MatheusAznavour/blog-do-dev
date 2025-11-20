@@ -18,6 +18,7 @@ async function selectArticle(limit, offset){
     LIMIT ? OFFSET ?;
     `;
     const [rows] = await pool.query(query, [limit, offset]);
+    return rows;
 };
 
 async function selectProject(params) {
