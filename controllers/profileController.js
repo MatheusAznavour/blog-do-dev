@@ -7,7 +7,7 @@ async function profile(req, res){
 
     console.log(profile)
 
-    res.render("profile/home");
+    res.render("profile/home", {profile});
 };
 
 module.exports = { profile }

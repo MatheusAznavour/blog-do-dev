@@ -1,1 +1,79 @@
-<h1>Profilee</h1>
+
+{{#each profile}}
+<div class="container mt-4">
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body text-center">
+            <!-- Foto de perfil centralizada -->
+            <div class="rounded-circle bg-secondary" style="width: 100px; height: 100px; overflow: hidden; margin: 0 auto;">
+                <img src="{{this.image_link}}" alt="" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h5 class="card-title mt-3">{{this.username}}</h5>
+            {{#if this.description}}
+                <p class="card-text text-muted mb-2">{{this.description}}</p>
+            {{else}}
+                <p class="card-text text-muted mb-2">No description yet</p>
+            {{/if}}
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- Membro desde (à esquerda) -->
+                <p class="text-muted mb-0">member since {{this.created_at}}</p>
+                <!-- Likes (à direita) -->
+                {{#if this.likes_count}}
+                    <span class="badge bg-warning text-dark">👋{{this.likes_count}}</span>
+                {{else}}
+                    <span class="badge bg-warning text-dark">👋0</span>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Seções -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">experiência acadêmica</h5>
+            <div class="p-3 border rounded">
+                {{#if this.academic_major}}
+                    <p>major: {{this.academic_major}}</p>
+                    <p>institution: {{this.academic_institution}}</p>
+                    <p>Arrival: {{this.academic_arrival}}</p>
+                    <p>departure: {{this.academic_departure}}</p>
+                    <p>description: {{this.academic_description}}</p>
+                {{else}}
+                    <p>No academic records</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">experiência profissional</h5>
+            <div class="p-3 border rounded">
+                {{#if this.profissional_position}}
+                    <p>position: {{this.profissional_position}}</p>
+                    <p>enterprise: {{this.profissional_enterprise}}</p>
+                    <p>Arrival: {{this.profissional_arrival}}</p>
+                    <p>departure: {{this.profissional_departure}}</p>
+                    <p>description: {{this.profissional_description}}</p>
+                {{else}}
+                    <p>No job records</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Stacks</h5>
+            <div class="p-3 border rounded">
+                {{#if this.stacks_name}}
+                    <p>{{this.stacks_name}}</p>
+                {{else}}
+                    <p>No stacks selected</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/each}}
