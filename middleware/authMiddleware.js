@@ -8,7 +8,14 @@ function checkSessionExists(req, res, next){
         return next();
     };
     res.redirect("/");
-    
+};
+
+function checkSessionNotExists(req, res, next){
+    const userSession = req.session.user || undefined;
+    if(userSession) {
+        return res.redirect("/"); 
+    };
+    next();
 };
 
 
@@ -21,4 +28,8 @@ function retrieveSession(req, res, next){
     next();
 };
 
-module.exports = { checkOriginalPoster, checkSessionExists, retrieveSession };
+module.exports = { 
+    checkOriginalPoster, 
+    checkSessionExists,
+    checkSessionNotExists, 
+    retrieveSession };
