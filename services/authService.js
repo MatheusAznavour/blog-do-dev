@@ -26,10 +26,13 @@ async function validateUser(email, password) {
 async function createSession(req, email) {
     const id = await Users.selectPasswordByEmail(email);
     const idNormalized = id[0].id;
+    const nameNormalized = id[0].username;
 
     req.session.user = {
-        userId: idNormalized
+        userId: idNormalized,
+        userName: nameNormalized
     };
+    console.log(req.session)
 };
 
 function destroySession(req){

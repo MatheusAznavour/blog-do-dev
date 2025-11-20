@@ -12,6 +12,8 @@ const authRouter = require("./routes/authRouter");
 const articleRouter = require("./routes/posts/articleRouter"); 
 const projectRouter = require("./routes/posts/projectRouter");
 
+const authMiddleware = require("./middleware/authMiddleware");
+
 app.engine("hbs", exphbs.engine({extname: ".hbs"}));
 app.set("view engine", "hbs");
 
@@ -31,6 +33,8 @@ app.use(session({
         maxAge: 1000 * 60 * 60,
     },
 }));
+
+app.use(authMiddleware.retrieveSession);
 
 app.use("/", homeRouter);
 app.use("/", authRouter);
