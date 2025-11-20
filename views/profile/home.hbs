@@ -1,3 +1,11 @@
+{{#if error}}
+<div class="alert alert-danger" role="alert">
+    {{#each error}}
+    {{this}}
+    {{/each}}
+</div>
+{{/if}}
+
 
 {{#each profile}}
 <div class="container mt-4">
