@@ -11,6 +11,7 @@ const homeRouter = require("./routes/homeRouter");
 const authRouter = require("./routes/authRouter");
 const articleRouter = require("./routes/posts/articleRouter"); 
 const projectRouter = require("./routes/posts/projectRouter");
+const profileRouter = require("./routes/profileRouter");
 
 const authMiddleware = require("./middleware/authMiddleware");
 
@@ -40,5 +41,6 @@ app.use("/", homeRouter);
 app.use("/", authRouter);
 app.use("/posts", articleRouter);
 app.use("/posts", projectRouter);
+app.use("/profile", profileRouter)
 
 app.listen(3000);
