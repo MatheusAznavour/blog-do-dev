@@ -8,8 +8,6 @@ async function profile(req, res){
         return res.render("profile/home", {error: ["Profile not found!"]});
     }
 
-    console.log(profile)
-
     res.render("profile/home", {profile});
 };
 

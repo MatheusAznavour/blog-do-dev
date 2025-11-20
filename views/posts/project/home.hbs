@@ -10,9 +10,9 @@
 
         <div class="container mt-5 ">
             {{#if pj_is_done }}
-            <small><i>Concluido</i></small>
+                <small><i>Concluido</i></small>
             {{else}}
-            <small><i>Em progresso</i></small>
+                <small><i>Em progresso</i></small>
             {{/if}}
     {{#each project}}
             <!-- Post Header -->
@@ -20,7 +20,8 @@
                 <div class="col-md-12">                    
                 </div>
                         <div class="d-flex justify-content-between align-items-center">
-                            <p class="lead"><img src="{{op_img_link}}" class="img-thumbnail" width="40" height="40"> Por <strong>{{ this.op_name }}</strong></p>
+                            <p class="lead"><img src="{{op_img_link}}" class="img-thumbnail" width="40" height="40"> 
+                            Por <a href="/profile/{{this.op_id}}/{{this.op_name}}"> <strong>{{ this.op_name }}</strong> </a> </p>
                             <p><small><i>Publish in: {{ this.created_at }}</i></small></p>
                         </div>
             </div>
