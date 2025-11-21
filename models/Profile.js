@@ -30,4 +30,58 @@ async function selectProfile(id) {
     return rows;
 };
 
-module.exports = { selectProfile }
+async function selectProfileArticle(user_id, limit, offset) {
+    const query = `
+    SELECT 
+        a.id, 
+        a.title, 
+        a.slug, 
+        a.content, 
+        a.likes_count,
+        LEFT(a.created_at, 10) as created_at,
+        LEFT(a.updated_at, 10) as updated_at,
+        u.id as op_id, 
+        u.username as op_name, 
+        u.image_link as op_img_link 
+        FROM articles a
+        INNER JOIN users u ON a.users_id=u.id
+        WHERE u.id=?
+        ORDER BY a.id DESC
+        LIMIT ? OFFSET ?;
+    `;
+    const [rows] = await pool.query(query, [user_id, limit, offset]);
+    return rows;
+};
+
+async function selectProfileProject(user_id, limit, offset) {
+    const query = `
+    SELECT
+        p.id,
+        p.title,
+        p.slug,
+        p.description,
+        p.repository_link,
+        p.deployed_link,
+        p.is_done,
+        p.image_link,
+        p.likes_count,
+        LEFT(p.created_at, 10) as created_at,
+        LEFT(p.updated_at, 10) as updated_at,
+        u.id as op_id,
+        u.username as op_username,
+        u.image_link as op_image_link
+        FROM projects p
+        INNER JOIN users u ON p.users_id=u.id
+        WHERE u.id=?
+        ORDER BY p.id DESC
+        LIMIT ? OFFSET ?;
+    `;
+    const [rows] = pool.query(query, [user_id, limit, offset]);
+    return rows;
+};
+
+module.exports = { 
+    selectProfile,
+    selectProfileArticle,
+    selectProfileProject
+};

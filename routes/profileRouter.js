@@ -4,7 +4,7 @@ const profileController = require("./../controllers/profileController");
 
 router.get("/:id/:username", profileController.profile);
 
-router.get("/dashboard/posts", ()=>{});
+router.get("/dashboard/", profileController.dashboard);
 
 router.get("/settings", ()=>{});
 router.post("/settings", ()=>{});

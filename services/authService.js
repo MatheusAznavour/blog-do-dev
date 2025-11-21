@@ -34,7 +34,6 @@ async function createSession(req, email) {
         userName: nameNormalized,
         imageLink: imageLinkNormalized
     };
-    console.log(req.session, id)
 };
 
 function destroySession(req){
