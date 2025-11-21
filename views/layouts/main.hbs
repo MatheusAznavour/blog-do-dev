@@ -29,23 +29,36 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarNav1">
-                        <ul class="navbar-nav ms-auto">
 
+                        <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                                 <a class="nav-link active" href="/">Home</a>
                             </li>
+                            <!--Options-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">options</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fw-bold" href="/profile/{{session.userId}}/{{session.userName}}">Hello {{session.userName}}</a>
+                                    </li>
 
-                            <form action="/logout" method="post">
-                                <button type="submit" class="nav-link text-danger">logout</button>
-                            </form>
-
-                            <li class="nav-item">
-                                <a class="nav-link fw-bold" href="/signin">Hello {{session.userName}}</a>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <form action="/logout" method="post">
+                                        <button type="submit" class="nav-link text-danger">logout</button>
+                                    </form>
+                                </ul>
                             </li>
+
 
                         </ul>
                     </div>
                 </div>
+                
             </nav>
         </div>
 
