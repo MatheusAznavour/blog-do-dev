@@ -27,7 +27,7 @@ function editProfile(req, res){
     res.render("profile/settings/editProfile");
 };
 
-async function editProfileForm(req, res){
+async function editProfileForm(req, res){ //work from here
     
 };
 

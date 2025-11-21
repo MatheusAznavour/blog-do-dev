@@ -45,14 +45,16 @@
                                         options
                                     </a>
                                 {{/if}}
-                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown"> 
                                     <li class="nav-item">
                                         <a class="nav-link" href="/profile/dashboard">Dashboard</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link fw-bold" href="/profile/{{session.userId}}/{{session.userName}}">Hello {{session.userName}}</a>
                                     </li>
-
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/profile/settings/edit-profile">edit profile</a>
+                                    </li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
