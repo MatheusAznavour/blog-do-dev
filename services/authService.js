@@ -36,10 +36,16 @@ async function createSession(req, email) {
     };
 };
 
-function destroySession(req){
+function destroySession(req, res){
+
     req.session.destroy((err) =>{
-        if(err){return console.log("cannot access session here: ", err)};
-        res.redirect("/");
+        if(err){
+            console.log("cannot access session here: ", err)
+            return res.redirect("/");
+        }else{
+            res.clearCookie('connect.sid');
+            res.redirect("/");
+        }
     });
 };
 
