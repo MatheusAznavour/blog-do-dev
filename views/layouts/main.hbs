@@ -35,8 +35,16 @@
                                 <a class="nav-link active" href="/">Home</a>
                             </li>
                             <!--Options-->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">options</a>
+                            <li class="nav-item dropdown"> 
+                                {{#if session.imageLink}}
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="{{ session.imageLink }}" alt="" class="rounded  img-fluid" width="30" height="40">
+                                    </a>
+                                {{else}}
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        options
+                                    </a>
+                                {{/if}}
                                 <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                     <li class="nav-item">
                                         <a class="nav-link" href="/">Dashboard</a>

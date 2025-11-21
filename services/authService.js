@@ -27,12 +27,14 @@ async function createSession(req, email) {
     const id = await Users.selectPasswordByEmail(email);
     const idNormalized = id[0].id;
     const nameNormalized = id[0].username;
+    const imageLinkNormalized = id[0].image_link;
 
     req.session.user = {
         userId: idNormalized,
-        userName: nameNormalized
+        userName: nameNormalized,
+        imageLink: imageLinkNormalized
     };
-    console.log(req.session)
+    console.log(req.session, id)
 };
 
 function destroySession(req){
