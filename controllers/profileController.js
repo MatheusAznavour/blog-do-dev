@@ -13,13 +13,13 @@ async function profile(req, res){
 
 async function dashboard(req, res) {
     const userSession = req.session.user;
-    console.log(userSession)
     if(userSession === undefined){
         return res.render("profile/dashboard/home", {error: ["Not signed in!"]});
     }
     const articles = await profileService.getProfileArticle(userSession.userId, 5, 0);
-    console.log(articles)
-    res.render("profile/dashboard/home");
+    const projects = await profileService.getProfileProject(userSession.userId, 5, 0);
+    console.log(projects);
+    res.render("profile/dashboard/home", {articles, projects});
 }
 
 module.exports = { profile, dashboard }

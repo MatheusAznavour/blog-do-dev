@@ -36,7 +36,7 @@ async function selectProfileArticle(user_id, limit, offset) {
         a.id, 
         a.title, 
         a.slug, 
-        a.content, 
+        CONCAT(LEFT(a.content, 100), '...') AS preview, 
         a.likes_count,
         LEFT(a.created_at, 10) as created_at,
         LEFT(a.updated_at, 10) as updated_at,
@@ -76,7 +76,7 @@ async function selectProfileProject(user_id, limit, offset) {
         ORDER BY p.id DESC
         LIMIT ? OFFSET ?;
     `;
-    const [rows] = pool.query(query, [user_id, limit, offset]);
+    const [rows] = await pool.query(query, [user_id, limit, offset]);
     return rows;
 };
 
