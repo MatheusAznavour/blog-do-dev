@@ -19,6 +19,19 @@ async function dashboard(req, res) {
     const articles = await profileService.getProfileArticle(userSession.userId, 5, 0);
     const projects = await profileService.getProfileProject(userSession.userId, 5, 0);
     res.render("profile/dashboard/home", {articles, projects});
-}
+};
 
-module.exports = { profile, dashboard }
+//Setting
+
+function editProfile(req, res){
+    res.render("profile/settings/editProfile");
+};
+
+async function editProfileForm(req, res){
+    
+};
+
+module.exports = { 
+    profile, 
+    dashboard,
+    editProfile, editProfileForm};

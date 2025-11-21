@@ -80,6 +80,8 @@ async function selectProfileProject(user_id, limit, offset) {
     return rows;
 };
 
+//Inserts
+
 module.exports = { 
     selectProfile,
     selectProfileArticle,
