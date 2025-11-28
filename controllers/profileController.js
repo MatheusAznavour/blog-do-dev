@@ -1,4 +1,5 @@
 const profileService = require("./../services/profileService");
+const profileHelper = require("./../helpers/profileHelper");
 
 async function profile(req, res){
     const { id, username } = req.params;
@@ -28,7 +29,13 @@ function editProfile(req, res){
 };
 
 async function editProfileForm(req, res){ //work from here
-    
+    const { username, email, description, f1 } = req.body;
+    const isInfoValid = profileHelper.validateInfoInput(username, email, description);
+    if(!isInfoValid.success){
+        return res.render("profile/settings/editProfile", {error: isInfoValid.error});
+    }
+    console.log(username, email, description, f1);
+    res.redirect("/profile/settings/edit-profile");
 };
 
 module.exports = { 
