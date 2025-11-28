@@ -38,58 +38,61 @@
 
         <!-- Confirmar Button -->
         <div class="mb-3 text-center">
-            <button name="f1"
-            value="true" 
+            <button name="button"
+            value="f1" 
             type="submit" class="btn btn-primary">Send</button>
         </div>
     </form>
 
 
-    <form>
-
     <!-- ACADEMIC BACKGROUND -->
-    <form>
+
+    <form method="post" action="/profile/settings/edit-profile">
         <!-- Major -->
         <div class="mb-3">
             <label for="nome" class="form-label">Major:</label>
-            <input
+            <input name="ac_major"
             required type="text" class="form-control" id="nome" value="E">
         </div>
 
         <!-- Institution -->
         <div class="mb-3">
             <label for="nome" class="form-label">Institution:</label>
-            <input
+            <input name="ac_institution"
             required type="text" class="form-control" id="nome" value="E">
         </div>
 
         <!-- Arrival date -->
         <div class="mb-3">
             <label for="nome" class="form-label">Arrival date:</label>
-            <input
+            <input name="ac_arrival_date"
             required type="date" class="form-control" id="nome" value="E">
         </div>
 
         <!-- Arrival date -->
         <div class="mb-3">
             <label for="nome" class="form-label">Departure date:</label>
-            <input type="date" class="form-control" id="nome" value="E">
+            <input name="ac_departure_date"
+            type="date" class="form-control" id="nome" value="E">
         </div>
 
         <!-- Description -->
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Description:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="ac_description"
+            class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
 
         <!-- Confirmar Button -->
         <div class="mb-3 text-center">
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button name="button"
+            value="f2" 
+            type="submit" class="btn btn-primary">Send</button>
         </div>
     </form>
 
     <!-- PROFISSINAL EXPERIENCE -->
-    <form>
+    <form method="post" action="/profile/settings/edit-profile">
         <!-- Position -->
         <div class="mb-3">
             <label for="nome" class="form-label">Position:</label>
@@ -125,7 +128,9 @@
 
         <!-- Confirmar Button -->
         <div class="mb-3 text-center">
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button name="button"
+            value="f3" 
+            type="submit" class="btn btn-primary">Send</button>
         </div>
     </form>
 

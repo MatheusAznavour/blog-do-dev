@@ -29,12 +29,30 @@ function editProfile(req, res){
 };
 
 async function editProfileForm(req, res){ //work from here
-    const { username, email, description, f1 } = req.body;
-    const isInfoValid = profileHelper.validateInfoInput(username, email, description);
-    if(!isInfoValid.success){
-        return res.render("profile/settings/editProfile", {error: isInfoValid.error});
+    const { button } = req.body;
+    if(button == "f1"){
+        const { username, email, description } = req.body;
+        const isInfoValid = profileHelper.validateInfoInput(username, email, description);
+        if(!isInfoValid.success){
+            return res.render("profile/settings/editProfile", {error: isInfoValid.error});
+        };
     }
-    console.log(username, email, description, f1);
+    if(button == "f2"){
+        const { ac_major, ac_institution, ac_arrival_date, ac_departure_date, ac_description } = req.body
+        const isAcademicValid = profileHelper.validateAcademicInput(ac_major, ac_institution, ac_arrival_date, ac_description);
+        if(!isAcademicValid.success){
+            return res.render("profile/settings/editProfile", {error: isAcademicValid.error});
+        };
+
+        console.log("Formulario2")
+
+    }
+    
+    if(button == "f3"){
+        console.log("Formulario3")
+    }
+
+    //console.log(username, email, description, button);
     res.redirect("/profile/settings/edit-profile");
 };
 
