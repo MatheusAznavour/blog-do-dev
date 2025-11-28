@@ -49,6 +49,11 @@ async function editProfileForm(req, res){ //work from here
     }
     
     if(button == "f3"){
+        const { pr_position, pr_enterprise, pr_arrival, pr_departure, pr_description } = req.body;
+        const isProfessionalValid = profileHelper.validateProfessionalInput(pr_position, pr_enterprise, pr_arrival, pr_description);
+        if(!isProfessionalValid.success){
+            return res.render("profile/settings/editProfile", {error: isProfessionalValid.error});
+        };
         console.log("Formulario3")
     }
 

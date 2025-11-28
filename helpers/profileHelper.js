@@ -47,6 +47,32 @@ function validateAcademicInput(major, institution, arrival_date, description){
     };
 };
 
+function validateProfessionalInput(position, enterprise, arrival_date, description){
+        const data = {
+        user_position: position,
+        user_enterprise: enterprise,
+        user_arrival: arrival_date,
+        user_description: description,
+    }
+
+    const rules = {
+        user_position: "required|min:2|max:50|string",
+        user_enterprise: "required|min:2|max:50|string",
+        user_arrival: "required",
+        user_description: "max:250",
+    }
+    const validation = new validator(data, rules)
+
+    if(validation.fails()){
+        console.log("Validation failled!", validation.errors.all());
+        return { success: false, error: validation.errors.all() };
+    } else {
+        return { success: true};    
+    };
+}
+
 module.exports = { 
     validateInfoInput,
-    validateAcademicInput };
+    validateAcademicInput,
+    validateProfessionalInput,
+};
