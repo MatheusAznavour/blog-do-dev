@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `blogdodev01`.`profissional_experience` (
 		ON UPDATE NO ACTION);
 
 CREATE TABLE IF NOT EXISTS `blogdodev01`.`academic_background` (
-	`id` INT NOT NULL,
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`major` VARCHAR(50) NOT NULL,
 	`institution` VARCHAR(50) NOT NULL,
 	`arrival_date` DATE NOT NULL,

@@ -15,8 +15,18 @@ async function getProfileProject(user_id, limit, offset) {
     return projects;
 };
 
+//Settings
+async function addProfileAcademicInfo(id, major, institution, arrival_date, departure_date, description) {
+    return await Profile.replaceAcademicInfo(id, major, institution, arrival_date, departure_date, description);
+};
+
+async function addProfileProfissionalInfo(params) {
+    
+};
+
 module.exports = { 
     getProfile,
     getProfileArticle,
     getProfileProject,
+    addProfileAcademicInfo
  };

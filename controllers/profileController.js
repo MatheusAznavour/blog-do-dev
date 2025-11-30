@@ -30,6 +30,10 @@ function editProfile(req, res){
 
 async function editProfileForm(req, res){ //work from here
     const { button } = req.body;
+    const userSession = req.session.user;
+    const userId = userSession.userId;
+    console.log("##", userSession, userId)
+
     if(button == "f1"){
         const { username, email, description } = req.body;
         const isInfoValid = profileHelper.validateInfoInput(username, email, description);
@@ -44,8 +48,8 @@ async function editProfileForm(req, res){ //work from here
             return res.render("profile/settings/editProfile", {error: isAcademicValid.error});
         };
 
-        console.log("Formulario2")
-
+        await profileService.addProfileAcademicInfo(userId, ac_major, ac_institution, ac_arrival_date, ac_departure_date, ac_description);
+        console.log("Formulario2", ac_arrival_date)
     }
     
     if(button == "f3"){
