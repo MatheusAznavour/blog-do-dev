@@ -32,7 +32,6 @@ async function editProfileForm(req, res){ //work from here
     const { button } = req.body;
     const userSession = req.session.user;
     const userId = userSession.userId;
-    console.log("##", userSession, userId)
 
     if(button == "f1"){
         const { username, email, description } = req.body;
@@ -49,7 +48,6 @@ async function editProfileForm(req, res){ //work from here
         };
 
         await profileService.addProfileAcademicInfo(userId, ac_major, ac_institution, ac_arrival_date, ac_departure_date, ac_description);
-        console.log("Formulario2", ac_arrival_date)
     }
     
     if(button == "f3"){
@@ -58,6 +56,8 @@ async function editProfileForm(req, res){ //work from here
         if(!isProfessionalValid.success){
             return res.render("profile/settings/editProfile", {error: isProfessionalValid.error});
         };
+
+        
         console.log("Formulario3")
     }
 

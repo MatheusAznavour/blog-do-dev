@@ -100,6 +100,10 @@ async function replaceAcademicInfo(id, major, institution, arrival_date, departu
     return rows;
 };
 
+async function replaceProfissionalInfo(id, major, institution, arrival_date, departure_date, description) {
+    
+}
+
 module.exports = { 
     selectProfile,
     selectProfileArticle,
