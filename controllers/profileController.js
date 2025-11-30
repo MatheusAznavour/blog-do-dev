@@ -39,6 +39,8 @@ async function editProfileForm(req, res){ //work from here
         if(!isInfoValid.success){
             return res.render("profile/settings/editProfile", {error: isInfoValid.error});
         };
+
+        await profileService.addProfileInfo(userId, username, email, description);
     }
     if(button == "f2"){
         const { ac_major, ac_institution, ac_arrival_date, ac_departure_date, ac_description } = req.body

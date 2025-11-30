@@ -82,6 +82,16 @@ async function selectProfileProject(user_id, limit, offset) {
 
 //Inserts
 
+async function updateProfileInfo(id, username, email, description) {
+    const query = `
+    UPDATE users 
+        SET username=?, email=?, description=?
+        WHERE users.id=?;
+    `;
+    const [rows] = await pool.query(query, [username, email, description, id]);
+    return rows;
+};
+
 async function replaceAcademicInfo(id, major, institution, arrival_date, departure_date, description) {
     const query = `
     REPLACE INTO academic_background (id, major, institution, arrival_date, departure_date, description, users_id)
@@ -94,7 +104,7 @@ async function replaceAcademicInfo(id, major, institution, arrival_date, departu
         ?,
         ?
         );
-    `
+    `;
 
     const [rows] = await pool.query(query, [id, major, institution, arrival_date, departure_date, description, id]);
     return rows;
@@ -121,6 +131,7 @@ module.exports = {
     selectProfile,
     selectProfileArticle,
     selectProfileProject,
+    updateProfileInfo,
     replaceAcademicInfo,
     replaceProfissionalInfo
 };
