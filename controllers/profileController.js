@@ -24,8 +24,15 @@ async function dashboard(req, res) {
 
 //Setting
 
-function editProfile(req, res){
-    res.render("profile/settings/editProfile");
+async function editProfile(req, res){
+    const userSession = req.session.user;
+    if(!userSession){
+        return res.render("profile/settings/editProfile", {error: ["Theres no user logged in"]});
+    }
+    const userId = userSession.userId;
+    const profile = await profileService.getProfile(userId)
+
+    res.render("profile/settings/editProfile", {profile});
 };
 
 async function editProfileForm(req, res){ //work from here

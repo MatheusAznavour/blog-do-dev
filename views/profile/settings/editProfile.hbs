@@ -6,10 +6,11 @@
 </div>
 {{/if}}
 
+{{#each profile}}
 <div class="container mt-5">
     <!-- Login Info -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <span><strong>Login: </strong>userEmail</span>
+        <span><strong>Login: </strong>{{ this.email }}</span>
         
     </div>
 
@@ -19,21 +20,21 @@
         <div class="mb-3">
             <label for="nome" class="form-label">name:</label>
             <input name="username"
-            required type="text" class="form-control" id="nome" value="E">
+            required type="text" class="form-control" id="nome" value="{{ this.username }}">
         </div>
 
         <!-- Email de contato -->
         <div class="mb-3">
             <label for="email" class="form-label">Contact email:</label>
             <input name="email" 
-            required type="email" class="form-control" id="email" value="matheus.kunn896@gmail.com">
+            required type="email" class="form-control" id="email" value="{{ this.email }}">
         </div>
 
         <!-- Description -->
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Description:</label>
             <textarea name="description" 
-            class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            class="form-control" id="exampleFormControlTextarea1" rows="3">{{ this.description }}</textarea>
         </div>
 
         <!-- Confirmar Button -->
@@ -52,35 +53,35 @@
         <div class="mb-3">
             <label for="nome" class="form-label">Major:</label>
             <input name="ac_major"
-            required type="text" class="form-control" id="nome" value="">
+            required type="text" class="form-control" id="nome" value="{{ this.academic_major }}">
         </div>
 
         <!-- Institution -->
         <div class="mb-3">
             <label for="nome" class="form-label">Institution:</label>
             <input name="ac_institution"
-            required type="text" class="form-control" id="nome" value="">
+            required type="text" class="form-control" id="nome" value="{{ this.academic_institution }}">
         </div>
 
         <!-- Arrival date -->
         <div class="mb-3">
             <label for="nome" class="form-label">Arrival date:</label>
             <input name="ac_arrival_date"
-            required type="date" class="form-control" id="nome">
+            required type="date" class="form-control" id="nome" value="{{ this.academic_arrival }}">
         </div>
 
         <!-- Arrival date -->
         <div class="mb-3">
             <label for="nome" class="form-label">Departure date:</label>
             <input name="ac_departure_date"
-            type="date" class="form-control" id="nome">
+            type="date" class="form-control" id="nome" value="{{ this.academic_departure }}">
         </div>
 
         <!-- Description -->
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Description:</label>
             <textarea name="ac_description"
-            class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            class="form-control" id="exampleFormControlTextarea1" rows="3"> {{ this.academic_description }} </textarea>
         </div>
 
         <!-- Confirmar Button -->
@@ -97,35 +98,35 @@
         <div class="mb-3">
             <label for="nome" class="form-label">Position:</label>
             <input name="pr_position"
-            required type="text" class="form-control" id="nome" value="E">
+            required type="text" class="form-control" id="nome" value="{{ this.profissional_position }}">
         </div>
 
         <!-- Enterprise -->
         <div class="mb-3">
             <label for="nome" class="form-label">Enterprise:</label>
             <input name="pr_enterprise"
-            required type="text" class="form-control" id="nome" value="E">
+            required type="text" class="form-control" id="nome" value="{{ this.profissional_enterprise }}">
         </div>
 
         <!-- Arrival date -->
         <div class="mb-3">
             <label for="nome" class="form-label">Arrival date:</label>
             <input name="pr_arrival"
-            required type="date" class="form-control" id="nome" value="E">
+            required type="date" class="form-control" id="nome" value="{{ this.profissional_arrival }}">
         </div>
 
         <!-- Arrival date -->
         <div class="mb-3">
             <label for="nome" class="form-label">Departure date:</label>
             <input name="pr_departure"
-            type="date" class="form-control" id="nome" value="E">
+            type="date" class="form-control" id="nome" value="{{ this.profissional_departure }}">
         </div>
 
         <!-- Description -->
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Description:</label>
             <textarea name="pr_description"
-            class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            class="form-control" id="exampleFormControlTextarea1" rows="3"> {{ this.profissional_description }} </textarea>
         </div>
 
         <!-- Confirmar Button -->
@@ -137,3 +138,5 @@
     </form>
 
 </div>
+
+{{/each}}

@@ -5,6 +5,7 @@ async function selectProfile(id) {
     SELECT
 	u.id,
     u.username,
+    u.email,
     u.image_link,
 	u.description,
     u.likes_count,
