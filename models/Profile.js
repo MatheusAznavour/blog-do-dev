@@ -100,13 +100,27 @@ async function replaceAcademicInfo(id, major, institution, arrival_date, departu
     return rows;
 };
 
-async function replaceProfissionalInfo(id, major, institution, arrival_date, departure_date, description) {
-    
+async function replaceProfissionalInfo(id, position, enterprise, arrival_date, departure_date, description) {
+    const query = `
+    REPLACE INTO profissional_experience (id, position, enterprise, arrival_date, departure_date, description, users_id)
+        VALUES(
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+        );
+    `
+    const [rows] = await pool.query(query, [id, position, enterprise, arrival_date, departure_date, description, id]);
+    return rows;
 }
 
 module.exports = { 
     selectProfile,
     selectProfileArticle,
     selectProfileProject,
-    replaceAcademicInfo
+    replaceAcademicInfo,
+    replaceProfissionalInfo
 };

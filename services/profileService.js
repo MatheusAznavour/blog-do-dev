@@ -20,13 +20,14 @@ async function addProfileAcademicInfo(id, major, institution, arrival_date, depa
     return await Profile.replaceAcademicInfo(id, major, institution, arrival_date, departure_date, description);
 };
 
-async function addProfileProfissionalInfo(params) {
-    
+async function addProfileProfissionalInfo(id, position, enterprise, arrival_date, departure_date, description) {
+    return await Profile.replaceProfissionalInfo(id, position, enterprise, arrival_date, departure_date, description);
 };
 
 module.exports = { 
     getProfile,
     getProfileArticle,
     getProfileProject,
-    addProfileAcademicInfo
+    addProfileAcademicInfo,
+    addProfileProfissionalInfo
  };

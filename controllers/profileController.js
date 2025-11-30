@@ -57,8 +57,7 @@ async function editProfileForm(req, res){ //work from here
             return res.render("profile/settings/editProfile", {error: isProfessionalValid.error});
         };
 
-        
-        console.log("Formulario3")
+        await profileService.addProfileProfissionalInfo(userId, pr_position, pr_enterprise, pr_arrival, pr_departure, pr_description);
     }
 
     //console.log(username, email, description, button);
