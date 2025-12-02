@@ -6,14 +6,24 @@
 </div>
 {{/if}}
 
+
+{{#each profile}}
 <div class="container mt-5">
     <div class="row">
         <!-- Coluna para a imagem atual -->
-        <div class="col-md-6 text-center">
-            <h4>Actual image</h4>
-            <img src="https://via.placeholder.com/300x400.png?text=Imagem" class="img-fluid mb-3" alt="Actual image" >
-            <div class="bg-dark text-white p-2">E</div>
-        </div>
+        {{#if this.image_link}}
+            <div class="col-md-6 text-center">
+                <h4>Actual image</h4>
+                <img src="{{this.image_link}}" class="img-thumbnail h-50" alt="Actual image" >
+                <div class="bg-dark text-white p-2">{{this.username}}</div>
+            </div>
+        {{else}}
+            <div class="col-md-6 text-center">
+                <h4>User has no image</h4>
+                <img  class="img-thumbnail h-50" alt="Actual image" >
+                <div class="bg-dark text-white p-2">{{this.username}}</div>
+            </div>
+        {{/if}}
 
         <!-- Coluna para o formulário de envio -->
         <div class="col-md-6">
@@ -31,3 +41,4 @@
         </div>
     </div>
 </div>
+{{/each}}

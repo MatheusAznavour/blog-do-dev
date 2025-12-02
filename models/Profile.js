@@ -93,6 +93,16 @@ async function updateProfileInfo(id, username, email, description) {
     return rows;
 };
 
+async function updateProfilePhoto(id, image_link) {
+    const query = `
+    UPDATE users 
+        SET image_link=?
+        WHERE users.id=?;
+    `;
+    const [rows] = await pool.query(query, [image_link, id]);
+    return rows;
+};
+
 async function replaceAcademicInfo(id, major, institution, arrival_date, departure_date, description) {
     const query = `
     REPLACE INTO academic_background (id, major, institution, arrival_date, departure_date, description, users_id)
@@ -134,5 +144,6 @@ module.exports = {
     selectProfileProject,
     updateProfileInfo,
     replaceAcademicInfo,
-    replaceProfissionalInfo
+    replaceProfissionalInfo,
+    updateProfilePhoto
 };

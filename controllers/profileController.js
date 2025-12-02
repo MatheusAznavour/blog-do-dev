@@ -73,18 +73,34 @@ async function editProfileForm(req, res){
     res.redirect("/profile/settings/edit-profile");
 };
 
-function chnagePhoto(req, res){
-    res.render("profile/settings/changePhoto");
+async function chnagePhoto(req, res){
+    const userSession = req.session.user;
+    if(!userSession){
+        return res.render("profile/settings/changePhoto", {error: ["Theres no user logged in"]});
+    }
+    const userId = userSession.userId;
+    const profile = await profileService.getProfile(userId);
+
+    console.log(profile)
+
+    res.render("profile/settings/changePhoto", {profile});
 };
 
 function changePhotoForm(req, res){
+    const userSession = req.session.user;
+    if(!userSession){
+        return res.render("profile/settings/changePhoto", {error: ["Theres no user logged in"]});
+    }
+    const userId = userSession.userId;
+
     cloudinary.uploader.upload(req.file.path, async (err, result)=>{ 
         if(err){
-            return console.log(err);
+            return res.render("profile/settings/changePhoto", {error: ["Internal error with midia api"]});
         };
         console.log(result.secure_url);
         const url = result.secure_url;
-        
+        await profileService.addProfilePhoto(userId, url);
+        res.redirect("/profile/settings/change-photo");
     });
 };
 

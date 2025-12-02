@@ -28,11 +28,16 @@ async function addProfileProfissionalInfo(id, position, enterprise, arrival_date
     return await Profile.replaceProfissionalInfo(id, position, enterprise, arrival_date, departure_date, description);
 };
 
+async function addProfilePhoto(id, image_link){
+    return await Profile.updateProfilePhoto(id, image_link);
+};
+
 module.exports = { 
     getProfile,
     getProfileArticle,
     getProfileProject,
     addProfileInfo,
     addProfileAcademicInfo,
-    addProfileProfissionalInfo
+    addProfileProfissionalInfo,
+    addProfilePhoto
  };
