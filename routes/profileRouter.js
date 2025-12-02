@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const profileController = require("./../controllers/profileController");
 const authMiddleware = require("./../middleware/authMiddleware");
+const upload = require("./../middleware/multer");
 
 
 router.get("/settings/edit-profile", profileController.editProfile);
@@ -12,7 +13,7 @@ router.post("/settings", ()=>{});
 
 
 router.get("/settings/change-photo", profileController.chnagePhoto);
-router.post("/settings/change-photo", profileController.changePhotoForm);
+router.post("/settings/change-photo", upload.single("image"), profileController.changePhotoForm);
 
 router.get("/settings/stacks", ()=>{});
 router.post("/settings/stacks", ()=>{});

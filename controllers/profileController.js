@@ -1,5 +1,6 @@
 const profileService = require("./../services/profileService");
 const profileHelper = require("./../helpers/profileHelper");
+const cloudinary = require("./../middleware/config/cloudinaryConfig");
 
 async function profile(req, res){
     const { id, username } = req.params;
@@ -77,7 +78,14 @@ function chnagePhoto(req, res){
 };
 
 function changePhotoForm(req, res){
-
+    cloudinary.uploader.upload(req.file.path, async (err, result)=>{ 
+        if(err){
+            return console.log(err);
+        };
+        console.log(result.secure_url);
+        const url = result.secure_url;
+        
+    });
 };
 
 module.exports = { 

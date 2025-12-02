@@ -32,7 +32,7 @@ async function createProjectForm(req, res){
         return res.render("posts/project/create", {error: isValid.error});
     }
 
-    cloudinary.uploader.upload(req.file.path, async (err, result)=>{
+    cloudinary.uploader.upload(req.file.path, async (err, result)=>{ 
         if(err){
             return console.log(err);
         };
