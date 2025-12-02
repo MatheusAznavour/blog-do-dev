@@ -5,15 +5,11 @@ const authMiddleware = require("./../middleware/authMiddleware");
 const upload = require("./../middleware/multer");
 
 
-router.get("/settings/edit-profile", profileController.editProfile);
-router.post("/settings/edit-profile", profileController.editProfileForm);
+router.get("/settings/edit-profile", authMiddleware.checkSessionExists, profileController.editProfile);
+router.post("/settings/edit-profile", authMiddleware.checkSessionExists, profileController.editProfileForm);
 
-router.get("/settings", ()=>{});
-router.post("/settings", ()=>{});
-
-
-router.get("/settings/change-photo", profileController.chnagePhoto);
-router.post("/settings/change-photo", upload.single("image"), profileController.changePhotoForm);
+router.get("/settings/change-photo", authMiddleware.checkSessionExists, profileController.chnagePhoto);
+router.post("/settings/change-photo", authMiddleware.checkSessionExists, upload.single("image"), profileController.changePhotoForm);
 
 router.get("/settings/stacks", ()=>{});
 router.post("/settings/stacks", ()=>{});

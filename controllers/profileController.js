@@ -81,8 +81,6 @@ async function chnagePhoto(req, res){
     const userId = userSession.userId;
     const profile = await profileService.getProfile(userId);
 
-    console.log(profile)
-
     res.render("profile/settings/changePhoto", {profile});
 };
 
