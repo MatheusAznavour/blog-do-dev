@@ -27,12 +27,15 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-
+                    
                     <div class="collapse navbar-collapse" id="navbarNav1">
 
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                                 <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Hello {{session.userName}}!</a>
                             </li>
                             <!--Options-->
                             <li class="nav-item dropdown"> 
@@ -47,16 +50,28 @@
                                 {{/if}}
                                 <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown"> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/profile/dashboard">Dashboard</a>
+                                        <a class="nav-link" href="/posts/article/create">Create Article</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link fw-bold" href="/profile/{{session.userId}}/{{session.userName}}">Hello {{session.userName}}</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/profile/settings/edit-profile">edit profile</a>
+                                        <a class="nav-link" href="/posts/project/create">Create Project</a>
                                     </li>
                                     <li>
                                         <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link fw-bold" href="/profile/{{session.userId}}/{{session.userName}}">Profile</a>
+                                    </li
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/profile/dashboard">Dashboard</a>
+                                    </li>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/profile/settings/edit-profile">edit profile</a>
                                     </li>
                                     <form action="/logout" method="post">
                                         <button type="submit" class="nav-link text-danger">logout</button>
