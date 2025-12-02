@@ -45,10 +45,15 @@ async function createProjectForm(req, res){
 };
 
 async function editProject(req, res) {
-    res.render("posts/project/update");
+    const projectId = req.params.id;
+    const project = await projectService.getProject(projectId);
+    
+    console.log(project)
+
+    res.render("posts/project/update", {project});
 };
 
-async function editProjectForm(req, res) {
+async function editProjectForm(req, res) { //Work from here
     
 }
 

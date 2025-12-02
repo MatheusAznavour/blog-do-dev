@@ -7,7 +7,7 @@
         </div>
     {{/if}}
 
-
+{{#each project}}
     <div class="container mt-4">
 
         <div class="card-header text-black content-center">
@@ -20,21 +20,21 @@
     
                     <div class="mb-3">
                         <label for="titulo" class="form-label">Project title</label>
-                        <input name="title"
+                        <input name="title" value="{{this.title}}"
                         required type="text" class="form-control" id="titulo do projeto"
-                            placeholder="Project title">
+                        placeholder="Project title">
                     </div>
     
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="input1">Github link</label>
-                            <input name="repository_link" 
+                            <input name="repository_link" value="{{this.repository_link}}"
                             required type="text" class="form-control" id="input1"
                                 placeholder="https://github.com/your-name/project-name">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="input2">Site link (optional)</label>
-                            <input name="deployed_link" 
+                            <input name="deployed_link" value="{{this.deployed_link}}"
                             type="text" class="form-control" id="input2" placeholder="deploy link">
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                     <div class="mb-3">
                         <label for="resumo" class="form-label">Project overview:</label>
                         <textarea name="description" 
-                        class="form-control" id="resumo" rows="4" placeholder="Project overview"></textarea>
+                        class="form-control" id="resumo" rows="4" placeholder="Project overview">{{this.description}}</textarea>
                     </div>
     
                     <button type="submit" class="btn btn-primary">Postar</button>
@@ -68,9 +68,8 @@
         </div>
     
     
-    
     </div>
-
+{{/each}}
 
 
 </div>

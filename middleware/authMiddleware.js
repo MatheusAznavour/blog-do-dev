@@ -3,7 +3,6 @@ const projectService = require("./../services/posts/projectService");
 async function checkOriginalPoster(req, res, next){
     const userSession = req.session.user || undefined;
     const postId = req.params.id
-    console.log("POST ID", postId);
 
     if(!userSession){
         return res.redirect("/");
