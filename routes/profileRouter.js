@@ -11,8 +11,8 @@ router.get("/settings", ()=>{});
 router.post("/settings", ()=>{});
 
 
-router.get("/settings/change-photo", ()=>{});
-router.post("/settings/change-photo", ()=>{});
+router.get("/settings/change-photo", profileController.chnagePhoto);
+router.post("/settings/change-photo", profileController.changePhotoForm);
 
 router.get("/settings/stacks", ()=>{});
 router.post("/settings/stacks", ()=>{});

@@ -35,7 +35,7 @@ async function editProfile(req, res){
     res.render("profile/settings/editProfile", {profile});
 };
 
-async function editProfileForm(req, res){ //work from here
+async function editProfileForm(req, res){
     const { button } = req.body;
     const userSession = req.session.user;
     const userId = userSession.userId;
@@ -69,11 +69,20 @@ async function editProfileForm(req, res){ //work from here
         await profileService.addProfileProfissionalInfo(userId, pr_position, pr_enterprise, pr_arrival, pr_departure, pr_description);
     }
 
-    //console.log(username, email, description, button);
     res.redirect("/profile/settings/edit-profile");
+};
+
+function chnagePhoto(req, res){
+    res.render("profile/settings/changePhoto");
+};
+
+function changePhotoForm(req, res){
+
 };
 
 module.exports = { 
     profile, 
     dashboard,
-    editProfile, editProfileForm};
+    editProfile, editProfileForm,
+    chnagePhoto, changePhotoForm
+};

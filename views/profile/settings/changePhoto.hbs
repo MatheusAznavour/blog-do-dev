@@ -1,0 +1,33 @@
+{{#if error}}
+<div class="alert alert-danger" role="alert">
+    {{#each error}}
+    {{this}}
+    {{/each}}
+</div>
+{{/if}}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Coluna para a imagem atual -->
+        <div class="col-md-6 text-center">
+            <h4>Actual image</h4>
+            <img src="https://via.placeholder.com/300x400.png?text=Imagem" class="img-fluid mb-3" alt="Actual image" >
+            <div class="bg-dark text-white p-2">E</div>
+        </div>
+
+        <!-- Coluna para o formulário de envio -->
+        <div class="col-md-6">
+            <h4>Send an image</h4>
+            <p>The image must contain a minimun of 5kb and a maximun of 5mb, formats jpg, jpeg or png.</p>
+            <form action="/profile/settings/change-photo" method="post" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label for="imagem" class="form-label">Imagem:</label>
+                    <input name="image" class="form-control" type="file" id="imagem">
+                </div>
+                
+                <button type="submit" class="btn btn-info">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
