@@ -11,4 +11,12 @@ async function getProject(id) {
     return project;
 };
 
-module.exports = { createProject, getProject }
+async function getProjectByUserAndId(id, user_id){
+    const project = await Project.selectProjectByUserAndId(id, user_id);
+    return project;
+};
+
+module.exports = { 
+    createProject, 
+    getProject,
+    getProjectByUserAndId };

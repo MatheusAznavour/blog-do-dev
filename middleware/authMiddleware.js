@@ -1,5 +1,19 @@
-function checkOriginalPoster(req, res, next){
+const projectService = require("./../services/posts/projectService");
 
+async function checkOriginalPoster(req, res, next){
+    const userSession = req.session.user || undefined;
+    const postId = req.params.id
+    console.log("POST ID", postId);
+
+    if(!userSession){
+        return res.redirect("/");
+    }
+    const project = await projectService.getProjectByUserAndId(postId, userSession.userId);
+    if(project === undefined || project.length == 0){
+       return res.redirect("/");
+    }
+    
+    next();
 };
 
 function checkSessionExists(req, res, next){

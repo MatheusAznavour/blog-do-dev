@@ -44,7 +44,16 @@ async function createProjectForm(req, res){
     res.redirect("/posts/project/create");
 };
 
+async function editProject(req, res) {
+    res.render("posts/project/update");
+};
+
+async function editProjectForm(req, res) {
+    
+}
+
 module.exports = {
     project,
     createProject, createProjectForm,
+    editProject, editProjectForm
 };

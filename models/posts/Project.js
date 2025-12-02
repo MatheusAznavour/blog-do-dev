@@ -33,4 +33,19 @@ async function selecProject(id) {
     return rows;
 }
 
-module.exports = { insertProject, selecProject };
+async function selectProjectByUserAndId(id, user_id) {
+    const query = `
+    SELECT
+        id,
+        users_id
+        FROM projects
+        WHERE users_id=? AND id=?;
+    `;
+    const [rows] = await pool.query(query, [user_id, id]);
+    return rows;
+}
+
+module.exports = { 
+    insertProject, 
+    selecProject,
+    selectProjectByUserAndId };

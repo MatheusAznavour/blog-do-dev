@@ -11,9 +11,6 @@ router.post("/settings/edit-profile", authMiddleware.checkSessionExists, profile
 router.get("/settings/change-photo", authMiddleware.checkSessionExists, profileController.chnagePhoto);
 router.post("/settings/change-photo", authMiddleware.checkSessionExists, upload.single("image"), profileController.changePhotoForm);
 
-router.get("/settings/stacks", ()=>{});
-router.post("/settings/stacks", ()=>{});
-
 router.get("/:id/:username", profileController.profile);
 
 router.get("/dashboard/", authMiddleware.checkSessionExists, profileController.dashboard);
