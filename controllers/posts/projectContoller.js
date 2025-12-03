@@ -31,6 +31,9 @@ async function createProjectForm(req, res){
     if(!isValid.success){
         return res.render("posts/project/create", {error: isValid.error});
     }
+    if(req.file == undefined){
+        return res.render("posts/project/update", {error: ["You must provide an image!"]});
+    }
 
     cloudinary.uploader.upload(req.file.path, async (err, result)=>{ 
         if(err){
@@ -68,10 +71,14 @@ async function editProjectForm(req, res) { //Work from here
     if(!isValid.success){
         return res.render("posts/project/update", {error: isValid.error});
     }
+    if(req.file == undefined){
+        return res.render("posts/project/update", {error: ["You must provide an image!"]});
+    }
 
     cloudinary.uploader.upload(req.file.path, async (err, result)=>{ 
         if(err){
-            return console.log(err);
+            console.log(err)
+            return res.render("posts/project/update", {error: "Midia api internal error!"});
         };
         console.log(result.secure_url);
         const url = result.secure_url;
