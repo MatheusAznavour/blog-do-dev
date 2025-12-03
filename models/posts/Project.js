@@ -9,6 +9,15 @@ async function insertProject(title, slug, description, repository_link, deployed
     return rows;
 };
 
+async function deleteProject(id) {
+    const query = `
+    DELETE FROM projects
+	    WHERE id=?;
+    `;
+    const [rows] = await pool.query(query, [id]);
+    return rows;
+};
+
 async function updateProject(title, slug, description, repository_link, deployed_link, is_done, image_link, project_id) {
     const query = `
     UPDATE projects
@@ -58,5 +67,6 @@ async function selectProjectByUserAndId(id, user_id){
 module.exports = { 
     insertProject, 
     updateProject,
+    deleteProject,
     selecProject,
     selectProjectByUserAndId };

@@ -6,6 +6,10 @@ async function createProject(title, description, repository_link, deployed_link,
     await Project.insertProject(title, slugTitle, description, repository_link, deployed_link, is_done, image_link, users_id);
 };
 
+async function deleteProject(id) {
+    await Project.deleteProject(id);
+};
+
 async function updateProject(title, description, repository_link, deployed_link, is_done, image_link, project_id) {
     const slugTitle = slugify(title);
     await Project.updateProject(title, slugTitle, description, repository_link, deployed_link, is_done, image_link, project_id);
@@ -23,6 +27,7 @@ async function getProjectByUserAndId(id, user_id){
 
 module.exports = { 
     createProject, 
+    deleteProject,
     getProject,
     getProjectByUserAndId,
     updateProject };

@@ -85,10 +85,17 @@ async function editProjectForm(req, res) { //Work from here
     });
 
     res.redirect(`/posts/project/${projectId}/1/edit`);
-}
+};
+
+async function deleteProjectForm(req, res) {
+    const { id } = req.params;
+    await projectService.deleteProject(id);
+    res.redirect("/profile/dashboard");
+};
 
 module.exports = {
     project,
     createProject, createProjectForm,
-    editProject, editProjectForm
+    editProject, editProjectForm,
+    deleteProjectForm
 };
