@@ -9,6 +9,16 @@ async function insertProject(title, slug, description, repository_link, deployed
     return rows;
 };
 
+async function updateProject(title, slug, description, repository_link, deployed_link, is_done, image_link, project_id) {
+    const query = `
+    UPDATE projects
+        SET title=?, slug=?, description=?, repository_link=?, deployed_link=?, is_done=?, image_link=?
+        WHERE id=?;
+    `;
+    const [rows] = await pool.query(query, [title, slug, description, repository_link, deployed_link, is_done, image_link, project_id]);
+    return rows;
+};
+
 async function selecProject(id) {
     const query = `
     SELECT 
@@ -47,5 +57,6 @@ async function selectProjectByUserAndId(id, user_id) {
 
 module.exports = { 
     insertProject, 
+    updateProject,
     selecProject,
     selectProjectByUserAndId };

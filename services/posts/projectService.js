@@ -6,6 +6,11 @@ async function createProject(title, description, repository_link, deployed_link,
     await Project.insertProject(title, slugTitle, description, repository_link, deployed_link, is_done, image_link, users_id);
 };
 
+async function updateProject(title, description, repository_link, deployed_link, is_done, image_link, project_id) {
+    const slugTitle = slugify(title);
+    await Project.updateProject(title, slugTitle, description, repository_link, deployed_link, is_done, image_link, project_id);
+};
+
 async function getProject(id) {
     const project = await Project.selecProject(id);
     return project;
@@ -19,4 +24,5 @@ async function getProjectByUserAndId(id, user_id){
 module.exports = { 
     createProject, 
     getProject,
-    getProjectByUserAndId };
+    getProjectByUserAndId,
+    updateProject };

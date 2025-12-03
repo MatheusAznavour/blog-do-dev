@@ -54,7 +54,31 @@ async function editProject(req, res) {
 };
 
 async function editProjectForm(req, res) { //Work from here
-    
+    console.log(req.body)
+    const {
+        title,
+        repository_link,
+        deployed_link,
+        is_done,
+        description
+    } = req.body;
+    const projectId = req.params.id
+
+    const isValid = projectHelper.validateProjectInput(title, description, repository_link, deployed_link, is_done, 4);
+    if(!isValid.success){
+        return res.render("posts/project/update", {error: isValid.error});
+    }
+
+    cloudinary.uploader.upload(req.file.path, async (err, result)=>{ 
+        if(err){
+            return console.log(err);
+        };
+        console.log(result.secure_url);
+        const url = result.secure_url;
+        await projectService.updateProject(title, description, repository_link, deployed_link, is_done, url, projectId);
+    });
+
+    res.redirect(`/posts/project/${projectId}/1/edit`);
 }
 
 module.exports = {

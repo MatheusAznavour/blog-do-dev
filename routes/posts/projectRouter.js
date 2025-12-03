@@ -10,7 +10,7 @@ router.get("/project/create", projectController.createProject);
 router.post("/project/create", upload.single("image"), projectController.createProjectForm);
 
 router.get("/project/:id/:slug/edit", authMiddleware.checkOriginalPoster, projectController.editProject); 
-router.post("/project/:id/:slug/edit", projectController.editProjectForm);
+router.post("/project/:id/:slug/edit",  upload.single("image"), projectController.editProjectForm);
 
 router.post("/project/:id/:slug/delete", ()=>{});
 
