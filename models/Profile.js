@@ -1,6 +1,6 @@
 const pool = require("./../db/conn");
 
-async function selectProfile(id) {
+async function selectProfile(id) { 
     const query = `
     SELECT
 	u.id,
@@ -25,7 +25,8 @@ async function selectProfile(id) {
 	LEFT JOIN academic_background a ON  a.users_id=u.id
     LEFT JOIN profissional_experience p ON  p.users_id=u.id
     LEFT JOIN stacks s ON  s.users_id=u.id
-    WHERE u.id=?;
+    WHERE u.id=?
+    LIMIT 1;
     `;
     const [rows] = await pool.query(query, [id]);
     return rows;
