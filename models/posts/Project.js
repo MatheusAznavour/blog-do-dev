@@ -43,7 +43,7 @@ async function selecProject(id) {
     return rows;
 }
 
-async function selectProjectByUserAndId(id, user_id) {
+async function selectProjectByUserAndId(id, user_id){ 
     const query = `
     SELECT
         id,

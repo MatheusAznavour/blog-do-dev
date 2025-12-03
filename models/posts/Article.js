@@ -24,6 +24,18 @@ async function selectPost(id) {
     `;
     const [rows] = await pool.query(query, [id]);
     return rows;
-}
+};
 
-module.exports = { insertPost, selectPost };
+async function selectArticleByUserAndId(id, user_id){
+    const query = `
+    SELECT
+		id,
+		users_id
+		FROM articles
+		WHERE users_id=? AND id=?;    
+    `;
+    const [rows] = await pool.query(query, [user_id, id]);
+    return rows;
+};
+
+module.exports = { insertPost, selectPost, selectArticleByUserAndId };

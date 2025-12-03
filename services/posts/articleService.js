@@ -10,6 +10,10 @@ async function createArticle(title, htmlContent, opId){
     await Article.insertPost(opId, title, slugTitle, cleanHtmlContent);
 };
 
+async function updateArticle(params) {
+    
+}
+
 async function getArticle(id) {
     const article = await Article.selectPost(id)
     if(!article.length){
@@ -18,4 +22,9 @@ async function getArticle(id) {
     return article;
 }
 
-module.exports = { createArticle, getArticle };
+async function getProjectByUserAndId(id, user_id){
+    const article = await Article.selectArticleByUserAndId(id, user_id);
+    return article;
+};
+
+module.exports = { createArticle, getArticle, getProjectByUserAndId };

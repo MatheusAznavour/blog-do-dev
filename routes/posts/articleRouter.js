@@ -8,8 +8,8 @@ router.get("/article/:id/:slug", articleController.article);
 router.get("/article/create", authMiddleware.checkSessionExists, articleController.createArticle);
 router.post("/article/create", authMiddleware.checkSessionExists, articleController.createArticleForm);
 
-router.get("/article/:id/:slug/edit", ()=>{});
-router.post("/article/:id/:slug/edit", ()=>{});
+router.get("/article/:id/:slug/edit", authMiddleware.checkSessionExists, authMiddleware.checkOriginalPoster, articleController.updateArticle);
+router.post("/article/:id/:slug/edit", authMiddleware.checkSessionExists, authMiddleware.checkOriginalPoster, articleController.updateArticleForm);
 
 router.post("/article/:id/:slug/delete", ()=>{});
 
