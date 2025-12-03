@@ -78,7 +78,6 @@ async function editProjectForm(req, res) { //Work from here
     cloudinary.uploader.upload(req.file.path, async (err, result)=>{ 
         if(err){
             console.log(err)
-            return res.render("posts/project/update", {error: "Midia api internal error!"});
         };
         console.log(result.secure_url);
         const url = result.secure_url;

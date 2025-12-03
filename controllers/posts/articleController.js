@@ -32,11 +32,6 @@ async function updateArticle(req, res){
     const { id } = req.params;
     const article = await articleService.getArticle(id);
     
-    const path = req.path
-    const splittedPath = path.split("/");
-    const currentPath = splittedPath[1]
-    console.log(article);
-    console.log(currentPath)
     res.render("posts/article/update", {article});
 };
 
@@ -49,7 +44,7 @@ async function updateArticleForm(req, res){
     }
     await articleService.updateArticle(title, content, articleId);
 
-    res.redirect("/posts/article/create")
+    res.redirect(`/posts/article/${articleId}/1/edit`);
 };
 
 module.exports = {

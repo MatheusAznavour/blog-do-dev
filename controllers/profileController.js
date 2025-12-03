@@ -20,6 +20,8 @@ async function dashboard(req, res) {
     }
     const articles = await profileService.getProfileArticle(userSession.userId, 5, 0);
     const projects = await profileService.getProfileProject(userSession.userId, 5, 0);
+
+    console.log(articles)
     res.render("profile/dashboard/home", {articles, projects});
 };
 
