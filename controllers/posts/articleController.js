@@ -47,8 +47,15 @@ async function updateArticleForm(req, res){
     res.redirect(`/posts/article/${articleId}/1/edit`);
 };
 
+async function deleteArticleForm(req, res) {
+    const { id } = req.params;
+    await articleService.deleteArticle(id);
+    res.redirect("/profile/dashboard");
+};
+
 module.exports = {
     createArticle, createArticleForm,
     updateArticle, updateArticleForm,
+    deleteArticleForm,
     article
 };

@@ -6,6 +6,15 @@ async function insertPost(id, title, slug, content) {
     return rows;
 };
 
+async function deleteArticle(id) {
+    const query = `
+    DELETE FROM articles
+	    WHERE id=?;
+    `;
+    const [rows] = await pool.query(query, [id]);
+    return rows;
+}
+
 async function updateArticle(id, title, slug, content) {
     const query = `
     UPDATE articles
@@ -48,4 +57,8 @@ async function selectArticleByUserAndId(id, user_id){
     return rows;
 };
 
-module.exports = { insertPost, selectPost, selectArticleByUserAndId, updateArticle };
+module.exports = { 
+    insertPost, 
+    selectPost, selectArticleByUserAndId, 
+    updateArticle,
+    deleteArticle };

@@ -11,6 +11,6 @@ router.post("/article/create", authMiddleware.checkSessionExists, articleControl
 router.get("/article/:id/:slug/edit", authMiddleware.checkSessionExists, authMiddleware.checkOriginalPoster, articleController.updateArticle);
 router.post("/article/:id/:slug/edit", authMiddleware.checkSessionExists, authMiddleware.checkOriginalPoster, articleController.updateArticleForm);
 
-router.post("/article/:id/:slug/delete", ()=>{});
+router.post("/article/:id/:slug/delete", authMiddleware.checkSessionExists, authMiddleware.checkOriginalPoster, articleController.deleteArticleForm);
 
 module.exports = router;

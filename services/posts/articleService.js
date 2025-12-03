@@ -10,6 +10,10 @@ async function createArticle(title, htmlContent, opId){
     await Article.insertPost(opId, title, slugTitle, cleanHtmlContent);
 };
 
+async function deleteArticle(id) {
+    await Article.deleteArticle(id);
+};
+
 async function updateArticle(title, htmlContent, id) {
     const cleanHtmlContent = sanitizer(htmlContent, {
         allowedTags: sanitizer.defaults.allowedTags.concat([ 'img' ])
@@ -31,4 +35,8 @@ async function getProjectByUserAndId(id, user_id){
     return article;
 };
 
-module.exports = { createArticle, getArticle, updateArticle, getProjectByUserAndId };
+module.exports = { 
+    createArticle, 
+    getArticle, updateArticle,
+    deleteArticle, 
+    getProjectByUserAndId };
