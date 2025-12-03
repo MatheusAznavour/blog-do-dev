@@ -41,7 +41,15 @@ async function updateArticle(req, res){
 };
 
 async function updateArticleForm(req, res){
-    
+    const { title, content } = req.body;
+    const articleId = req.params.id;
+    const isValid = articleHelper.validateArticleInput(title, content);
+    if(!isValid.success){
+        return res.render("posts/article/update", {error: isValid.error});
+    }
+    await articleService.updateArticle(title, content, articleId);
+
+    res.redirect("/posts/article/create")
 };
 
 module.exports = {

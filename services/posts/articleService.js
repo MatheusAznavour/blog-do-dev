@@ -10,8 +10,12 @@ async function createArticle(title, htmlContent, opId){
     await Article.insertPost(opId, title, slugTitle, cleanHtmlContent);
 };
 
-async function updateArticle(params) {
-    
+async function updateArticle(title, htmlContent, id) {
+    const cleanHtmlContent = sanitizer(htmlContent, {
+        allowedTags: sanitizer.defaults.allowedTags.concat([ 'img' ])
+    });
+    const slugTitle = slugify(title);
+    await Article.updateArticle(id, title, slugTitle, cleanHtmlContent);
 }
 
 async function getArticle(id) {
@@ -27,4 +31,4 @@ async function getProjectByUserAndId(id, user_id){
     return article;
 };
 
-module.exports = { createArticle, getArticle, getProjectByUserAndId };
+module.exports = { createArticle, getArticle, updateArticle, getProjectByUserAndId };

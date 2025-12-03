@@ -6,6 +6,16 @@ async function insertPost(id, title, slug, content) {
     return rows;
 };
 
+async function updateArticle(id, title, slug, content) {
+    const query = `
+    UPDATE articles
+        SET title=?, slug=?, content=?
+        WHERE id=?;
+    `;
+    const [rows] = await pool.query(query, [title, slug, content, id]);
+    return rows;
+}
+
 async function selectPost(id) {
     const query = `
     SELECT 
@@ -38,4 +48,4 @@ async function selectArticleByUserAndId(id, user_id){
     return rows;
 };
 
-module.exports = { insertPost, selectPost, selectArticleByUserAndId };
+module.exports = { insertPost, selectPost, selectArticleByUserAndId, updateArticle };
