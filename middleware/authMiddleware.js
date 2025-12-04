@@ -13,16 +13,26 @@ async function checkOriginalPoster(req, res, next){
     }
     if(currentPath == "project"){
         const project = await projectService.getProjectByUserAndId(postId, userSession.userId);
+        if(userSession.role == "admin"){return}
         if(project === undefined || project.length == 0){
            return res.redirect("/");
         }
     }
     if(currentPath == "article"){
         const article = await articleService.getProjectByUserAndId(postId, userSession.userId);
+        if(userSession.role == "admin"){return}
         if(article === undefined || article.length == 0){
             return res.redirect("/");
         }
     }
+    next();
+};
+
+async function checkSessionIsAdmin(req, res, next){
+    const userSession = req.session.user || undefined;
+    if(userSession.role != "admin"){
+        return res.redirect("/");
+    };
     next();
 };
 
@@ -42,7 +52,6 @@ function checkSessionNotExists(req, res, next){
     next();
 };
 
-
 function retrieveSession(req, res, next){
     const userSession = req.session.user || undefined;
     if(userSession) {
@@ -55,5 +64,6 @@ function retrieveSession(req, res, next){
 module.exports = { 
     checkOriginalPoster, 
     checkSessionExists,
+    checkSessionIsAdmin,
     checkSessionNotExists, 
     retrieveSession };

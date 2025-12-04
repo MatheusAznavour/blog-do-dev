@@ -28,12 +28,19 @@ async function createSession(req, email) {
     const idNormalized = id[0].id;
     const nameNormalized = id[0].username;
     const imageLinkNormalized = id[0].image_link;
+    const role = await Users.selectRole(idNormalized); // role[0].name;
+    let roleNormalized = "";
+    if(role === undefined || role.length == 0 ){
+        roleNormalized = "user";
+    } else { roleNormalized = role[0].name};
 
     req.session.user = {
         userId: idNormalized,
         userName: nameNormalized,
-        imageLink: imageLinkNormalized
+        imageLink: imageLinkNormalized,
+        role: roleNormalized
     };
+    console.log(req.session.user)
 };
 
 function destroySession(req, res){

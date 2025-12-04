@@ -15,4 +15,14 @@ async function selectPasswordByEmail(email) {
 
 // By id
 
-module.exports = { signinInsert, selectPasswordByEmail };
+async function selectRole(id) {
+    const query = `
+    SELECT users.id, users.username, roles.name FROM users INNER JOIN roles 
+        ON users.id=roles.users_id
+        WHERE users.id=?;
+    `;
+    const [rows] = await pool.query(query, [id]);
+    return rows;
+};
+
+module.exports = { signinInsert, selectPasswordByEmail, selectRole };
