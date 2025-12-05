@@ -9,6 +9,7 @@ async function selectArticle(limit, offset){
     CONCAT(LEFT(a.content, 100), '...') AS preview,
     a.likes_count,
     LEFT(a.created_at, 10) as created_at,
+    LEFT(a.updated_at, 10) as updated_at,
     u.id as op_id,
     u.username as op_name,
     u.image_link as op_image_link
@@ -34,6 +35,7 @@ async function selectProject(limit, offset){
     p.image_link,
     p.likes_count,
     LEFT(p.created_at, 10) as created_at,
+    LEFT(p.updated_at, 10) as updated_at,
     u.id as op_id,
     u.username as op_username,
     u.image_link as op_image_link
