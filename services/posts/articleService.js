@@ -40,9 +40,14 @@ async function getProjectByUserAndId(id, user_id){
     return article;
 };
 
+async function createInteraction(post_id, article_id, profile_id, users_id) {
+    
+};
+
 module.exports = { 
     createArticle, 
     getArticle, updateArticle,
     deleteArticle, 
     getTotalArticles,
+    createInteraction,
     getProjectByUserAndId };

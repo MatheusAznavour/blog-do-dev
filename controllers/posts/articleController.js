@@ -53,6 +53,10 @@ async function deleteArticleForm(req, res) {
     res.redirect("/profile/dashboard");
 };
 
+async function likeArticle(params) {
+    
+}
+
 module.exports = {
     createArticle, createArticleForm,
     updateArticle, updateArticleForm,
