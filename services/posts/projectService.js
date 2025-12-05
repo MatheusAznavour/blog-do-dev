@@ -20,6 +20,11 @@ async function getProject(id) {
     return project;
 };
 
+async function getTotalProjects(){
+    const total = await Project.selectCountProject();
+    return total;
+};
+
 async function getProjectByUserAndId(id, user_id){
     const project = await Project.selectProjectByUserAndId(id, user_id);
     return project;
@@ -30,4 +35,5 @@ module.exports = {
     deleteProject,
     getProject,
     getProjectByUserAndId,
+    getTotalProjects,
     updateProject };

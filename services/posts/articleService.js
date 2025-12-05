@@ -30,6 +30,11 @@ async function getArticle(id) {
     return article;
 }
 
+async function getTotalArticles() {
+    const total = await Article.selectCount();
+    return total;
+}
+
 async function getProjectByUserAndId(id, user_id){
     const article = await Article.selectArticleByUserAndId(id, user_id);
     return article;
@@ -39,4 +44,5 @@ module.exports = {
     createArticle, 
     getArticle, updateArticle,
     deleteArticle, 
+    getTotalArticles,
     getProjectByUserAndId };

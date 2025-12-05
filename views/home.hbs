@@ -8,6 +8,34 @@
 
 <h1 class="text-center">Welcome to <b>blog do dev!<b></h1>
 
+<div class="container my-5">
+{{#if articles}}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination mx-auto">
+            <li class="page-item"><a class="page-link" href="?post_type=project">Projects</a></li>
+            {{#each paginationValues}}
+                <li class="page-item"><a class="page-link" href="?offset={{this.index}}">{{this.tab}}</a></li>
+            {{/each}}
+        </ul>
+    </nav>
+{{/if}}
+
+</div>
+
+<div class="container my-5">
+{{#if projects}}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination mx-auto">
+            <li class="page-item"><a class="page-link" href="?post_type=article">Article</a></li>
+            {{#each paginationValues}}
+                <li class="page-item"><a class="page-link" href="?post_type=project&offset={{this.index}}">{{this.tab}}</a></li>
+            {{/each}}
+        </ul>
+    </nav>
+{{/if}}
+
+</div>
+
 
 {{#each articles}}
 

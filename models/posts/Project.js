@@ -52,6 +52,12 @@ async function selecProject(id) {
     return rows;
 }
 
+async function selectCountProject() {
+    const query = `SELECT COUNT(*) as total FROM projects;`;
+    const [rows] = await pool.query(query);
+    return rows;
+};
+
 async function selectProjectByUserAndId(id, user_id){ 
     const query = `
     SELECT
@@ -69,4 +75,5 @@ module.exports = {
     updateProject,
     deleteProject,
     selecProject,
+    selectCountProject,
     selectProjectByUserAndId };

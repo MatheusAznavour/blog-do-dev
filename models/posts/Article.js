@@ -45,6 +45,12 @@ async function selectPost(id) {
     return rows;
 };
 
+async function selectCount(){
+    const query = `SELECT COUNT(*) as total FROM articles;`;
+    const [rows] = await pool.query(query);
+    return rows;
+}
+
 async function selectArticleByUserAndId(id, user_id){
     const query = `
     SELECT
@@ -60,5 +66,6 @@ async function selectArticleByUserAndId(id, user_id){
 module.exports = { 
     insertPost, 
     selectPost, selectArticleByUserAndId, 
+    selectCount,
     updateArticle,
     deleteArticle };
