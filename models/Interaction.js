@@ -48,19 +48,14 @@ async function insertInteraction(post_id, article_id, profile_id, users_id) {
     return rows;
 };
 
-async function dropInteraction(params) {
-    
-}
+// DROP
 
-async function dropLike(params) {
-    
-}
-
-async function selectInteraction(post_id, article_id, profile_id, users_id) {
+async function dropLike(post_id, article_id, profile_id, users_id) {
     if(post_id){
         const query = `
-        SELECT * FROM interactions
-            WHERE id=? AND post_id=2;
+        UPDATE projects
+            SET likes_count = likes_count - 1
+            WHERE id=?;
         `;
         const [rows] = await pool.query(query, [post_id]);
         return rows;
@@ -68,7 +63,7 @@ async function selectInteraction(post_id, article_id, profile_id, users_id) {
     if(article_id){
         const query = `
         UPDATE articles
-            SET likes_count = likes_count + 1
+            SET likes_count = likes_count - 1
             WHERE id=?;
         `;
         const [rows] = await pool.query(query, [article_id]);
@@ -77,10 +72,66 @@ async function selectInteraction(post_id, article_id, profile_id, users_id) {
     if(profile_id){
         const query = `
         UPDATE users
-            SET likes_count = likes_count + 1
+            SET likes_count = likes_count - 1
             WHERE id=?;
         `;
         const [rows] = await pool.query(query, [profile_id]);
+        return rows;
+    };
+}
+
+async function dropInteraction(post_id, article_id, profile_id, users_id) {
+    if(post_id){
+        const query = `
+        DELETE FROM interactions
+            WHERE post_id=? AND users_id=?;
+        `;
+        const [rows] = await pool.query(query, [post_id, users_id]);
+        return rows;
+    };
+    if(article_id){
+        const query = `
+        DELETE FROM interactions
+            WHERE article_id=? AND users_id=?;
+        `;
+        const [rows] = await pool.query(query, [article_id, users_id]);
+        return rows;
+    };
+    if(profile_id){
+        const query = `
+        DELETE FROM interactions
+            WHERE profile_id=? AND users_id=?;
+        `;
+        const [rows] = await pool.query(query, [profile_id, users_id]);
+        return rows;
+    };
+}
+
+
+// SELECT
+async function selectInteraction(post_id, article_id, profile_id, users_id) {
+    if(post_id){
+        const query = `
+        SELECT id, post_id FROM interactions
+            WHERE post_id=? AND users_id=?;
+        `;
+        const [rows] = await pool.query(query, [post_id, users_id]);
+        return rows;
+    };
+    if(article_id){
+        const query = `
+        SELECT id, article_id FROM interactions
+            WHERE article_id=? AND users_id=?;
+        `;
+        const [rows] = await pool.query(query, [article_id, users_id]);
+        return rows;
+    };
+    if(profile_id){
+        const query = `
+        SELECT id, profile_id FROM interactions
+            WHERE profile_id=? AND users_id=?;
+        `;
+        const [rows] = await pool.query(query, [profile_id, users_id]);
         return rows;
     };
 }

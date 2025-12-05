@@ -13,6 +13,6 @@ router.post("/article/:id/:slug/edit", authMiddleware.checkSessionExists, authMi
 
 router.post("/article/:id/:slug/delete", authMiddleware.checkSessionExists, authMiddleware.checkOriginalPoster, articleController.deleteArticleForm);
 
-router.post("/article/:id/:slug/like", authMiddleware.checkSessionExists, authMiddleware.checkOriginalPoster, articleController.deleteArticleForm);
+router.post("/article/:id/:slug/like", authMiddleware.checkSessionExists, articleController.likeArticle);
 
 module.exports = router;

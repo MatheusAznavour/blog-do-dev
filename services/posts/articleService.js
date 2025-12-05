@@ -1,6 +1,7 @@
 const slugify = require("slugify");
 const sanitizer = require("sanitize-html");
 const Article = require("./../../models/posts/Article");
+const Interaction = require("./../../models/Interaction");
 
 async function createArticle(title, htmlContent, opId){
     const cleanHtmlContent = sanitizer(htmlContent, {
@@ -41,7 +42,19 @@ async function getProjectByUserAndId(id, user_id){
 };
 
 async function createInteraction(post_id, article_id, profile_id, users_id) {
+    const userInteraction = await Interaction.selectInteraction(post_id, article_id, profile_id, users_id);
+    if(userInteraction === undefined || userInteraction.length == 0){
+        return console.log("THERES NO INTERACTION");
+        /*
+        await Interaction.insertLike(post_id, article_id, profile_id);
+        await Interaction.insertInteraction(post_id, article_id, profile_id, users_id);
+        */
+        //Insert interaction
+    };
+
     
+
+    console.log("THERES AN INTERACTION ALREADY!");
 };
 
 module.exports = { 
