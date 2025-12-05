@@ -76,12 +76,12 @@
                                     <form action="/logout" method="post">
                                         <button type="submit" class="nav-link text-danger">logout</button>
                                     </form>
+                                    {{#if role}}
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    {{#if role}}
                                         <h3>Admin painel</h3>
-                                    {{/if}}
+
 
                                     <li class="nav-item">
                                         <a class="nav-link text-warning" href="/admin/posts">manage posts</a>
@@ -89,7 +89,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-warning" href="/admin/users">manage users</a>
                                     </li>
-
+                                    {{/if}}
                                 </ul>
                             </li>
 
