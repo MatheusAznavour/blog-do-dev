@@ -40,7 +40,6 @@ async function createSession(req, email) {
         imageLink: imageLinkNormalized,
         role: roleNormalized
     };
-    console.log(req.session.user)
 };
 
 function destroySession(req, res){

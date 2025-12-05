@@ -55,6 +55,9 @@ function checkSessionNotExists(req, res, next){
 function retrieveSession(req, res, next){
     const userSession = req.session.user || undefined;
     if(userSession) {
+        if(userSession.role == "admin"){
+            res.locals.role = "admin";
+        };
         res.locals.session = userSession;
     };
 
