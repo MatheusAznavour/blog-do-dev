@@ -17,7 +17,6 @@ async function home(req, res) {
             index += 1
             paginationValues.push({index: index * limit, tab: paginationValues.length + 1});
         }
-        console.log(paginationValues)
 
         if(articles.length === 0){
             return res.render("home", {error: ["Could not find any post"]})
