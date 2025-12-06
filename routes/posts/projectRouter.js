@@ -14,4 +14,6 @@ router.post("/project/:id/:slug/edit",  upload.single("image"), projectControlle
 
 router.post("/project/:id/:slug/delete", authMiddleware.checkSessionExists, authMiddleware.checkOriginalPoster, projectController.deleteProjectForm);
 
+router.post("/project/:id/:slug/like", authMiddleware.checkSessionExists, projectController.deleteProjectForm);
+
 module.exports = router;

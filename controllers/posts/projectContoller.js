@@ -93,6 +93,10 @@ async function deleteProjectForm(req, res) {
     res.redirect("/profile/dashboard");
 };
 
+async function likeProjectForm(req, res) {
+    
+}
+
 module.exports = {
     project,
     createProject, createProjectForm,

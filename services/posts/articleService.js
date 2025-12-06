@@ -46,6 +46,7 @@ async function createInteraction(post_id, article_id, profile_id, users_id) {
     if(userInteraction === undefined || userInteraction.length == 0){
         await Interaction.insertLike(post_id, article_id, profile_id);
         await Interaction.insertInteraction(post_id, article_id, profile_id, users_id);
+        return
         //Insert interaction
     };
     await Interaction.dropLike(post_id, article_id, profile_id, users_id);

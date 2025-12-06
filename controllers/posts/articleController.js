@@ -53,7 +53,7 @@ async function deleteArticleForm(req, res) {
     res.redirect("/profile/dashboard");
 };
 
-async function likeArticle(req, res) {
+async function likeArticleForm(req, res) {
     const userSession = req.session.user || undefined; // userSession.userId
     const { id, slug } = req.params;
     await articleService.createInteraction(null, id, null, userSession.userId);
@@ -63,6 +63,6 @@ async function likeArticle(req, res) {
 module.exports = {
     createArticle, createArticleForm,
     updateArticle, updateArticleForm,
-    deleteArticleForm, likeArticle,
+    deleteArticleForm, likeArticleForm,
     article
 };
