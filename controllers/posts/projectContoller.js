@@ -98,8 +98,8 @@ async function likeProjectForm(req, res) {
     const userSession = req.session.user || undefined; // userSession.userId
     const { id, slug } = req.params;
     await articleService.createInteraction(id, null, null, userSession.userId);
-    res.redirect(`/posts/project/${id}/${slug}`)
-}
+    res.redirect(`/posts/project/${id}/${slug}`);
+};
 
 module.exports = {
     project,

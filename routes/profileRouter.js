@@ -13,6 +13,8 @@ router.post("/settings/change-photo", authMiddleware.checkSessionExists, upload.
 
 router.get("/:id/:username", profileController.profile);
 
+router.post("/:id/:username/like", authMiddleware.checkSessionExists, profileController.likeProfileForm);
+
 router.get("/dashboard/", authMiddleware.checkSessionExists, profileController.dashboard);
 
 

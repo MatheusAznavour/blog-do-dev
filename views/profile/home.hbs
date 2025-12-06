@@ -26,11 +26,11 @@
                 <!-- Membro desde (à esquerda) -->
                 <p class="text-muted mb-0">member since {{this.created_at}}</p>
                 <!-- Likes (à direita) -->
-                {{#if this.likes_count}}
+                <form action="/profile/{{this.id}}/{{this.username}}/like" method="post">
+                <button type="submit" class="btn btn-link ">
                     <span class="badge bg-warning text-dark">👋{{this.likes_count}}</span>
-                {{else}}
-                    <span class="badge bg-warning text-dark">👋0</span>
-                {{/if}}
+                </button>
+                </form>
             </div>
         </div>
     </div>

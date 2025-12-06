@@ -1,4 +1,5 @@
 const profileService = require("./../services/profileService");
+const articleService = require("./../services/posts/articleService");
 const profileHelper = require("./../helpers/profileHelper");
 const cloudinary = require("./../middleware/config/cloudinaryConfig");
 
@@ -8,7 +9,7 @@ async function profile(req, res){
     const profile = await profileService.getProfile(id);
     if(profile.length === 0){
         return res.render("profile/home", {error: ["Profile not found!"]});
-    }
+    };
 
     res.render("profile/home", {profile});
 };
@@ -103,9 +104,17 @@ function changePhotoForm(req, res){
     });
 };
 
+async function likeProfileForm(req, res) {
+    const userSession = req.session.user || undefined; // userSession.userId
+    const { id, slug } = req.params;
+    await articleService.createInteraction(null, null, id, userSession.userId);
+    res.redirect(`/profile/${id}/${slug}`);
+}
+
 module.exports = { 
     profile, 
     dashboard,
     editProfile, editProfileForm,
-    chnagePhoto, changePhotoForm
+    chnagePhoto, changePhotoForm,
+    likeProfileForm
 };

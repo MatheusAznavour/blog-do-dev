@@ -43,7 +43,7 @@ async function getProjectByUserAndId(id, user_id){
 
 async function createInteraction(post_id, article_id, profile_id, users_id) {
     const userInteraction = await Interaction.selectInteraction(post_id, article_id, profile_id, users_id);
-    if(userInteraction === undefined || userInteraction.length == 0){
+    if(userInteraction === undefined || userInteraction.length == 0){ //Indicates with sesssion.locals
         await Interaction.insertLike(post_id, article_id, profile_id);
         await Interaction.insertInteraction(post_id, article_id, profile_id, users_id);
         return
