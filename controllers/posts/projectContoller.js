@@ -1,6 +1,7 @@
 const cloudinary = require("./../../middleware/config/cloudinaryConfig");
 const projectService = require("./../../services/posts/projectService");
 const projectHelper = require("./../../helpers/posts/projectHelper");
+const articleService = require("./../../services/posts/articleService")
 
 async function project(req, res) {
     const id = req.params.id || 0
@@ -94,12 +95,16 @@ async function deleteProjectForm(req, res) {
 };
 
 async function likeProjectForm(req, res) {
-    
+    const userSession = req.session.user || undefined; // userSession.userId
+    const { id, slug } = req.params;
+    await articleService.createInteraction(id, null, null, userSession.userId);
+    res.redirect(`/posts/project/${id}/${slug}`)
 }
 
 module.exports = {
     project,
     createProject, createProjectForm,
     editProject, editProjectForm,
+    likeProjectForm,
     deleteProjectForm
 };
