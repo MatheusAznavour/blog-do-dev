@@ -44,17 +44,12 @@ async function getProjectByUserAndId(id, user_id){
 async function createInteraction(post_id, article_id, profile_id, users_id) {
     const userInteraction = await Interaction.selectInteraction(post_id, article_id, profile_id, users_id);
     if(userInteraction === undefined || userInteraction.length == 0){
-        return console.log("THERES NO INTERACTION");
-        /*
         await Interaction.insertLike(post_id, article_id, profile_id);
         await Interaction.insertInteraction(post_id, article_id, profile_id, users_id);
-        */
         //Insert interaction
     };
-
-    
-
-    console.log("THERES AN INTERACTION ALREADY!");
+    await Interaction.dropLike(post_id, article_id, profile_id, users_id);
+    await Interaction.dropInteraction(post_id, article_id, profile_id, users_id);
 };
 
 module.exports = { 

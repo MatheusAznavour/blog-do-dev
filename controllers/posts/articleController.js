@@ -55,8 +55,9 @@ async function deleteArticleForm(req, res) {
 
 async function likeArticle(req, res) {
     const userSession = req.session.user || undefined; // userSession.userId
-    const { id } = req.params;
-    articleService.createInteraction(null, id, null, userSession.userId);
+    const { id, slug } = req.params;
+    await articleService.createInteraction(null, id, null, userSession.userId);
+    res.redirect(`/posts/article/${id}/${slug}`)
 }
 
 module.exports = {
