@@ -16,7 +16,7 @@ async function signinForm(req, res){
 
     await authService.createUser(user_name, user_email, user_password);
 
-    res.redirect("/signin");
+    res.redirect("/login");
 };
 
 // 
