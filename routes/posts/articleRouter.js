@@ -3,7 +3,7 @@ const router = express.Router();
 const articleController = require("./../../controllers/posts/articleController");
 const authMiddleware = require("./../../middleware/authMiddleware");
 
-router.get("/article/:id/:slug", articleController.article);
+router.get("/article/:id/:slug", authMiddleware.checkSessionLiked, articleController.article);
 
 router.get("/article/create", authMiddleware.checkSessionExists, articleController.createArticle);
 router.post("/article/create", authMiddleware.checkSessionExists, articleController.createArticleForm);

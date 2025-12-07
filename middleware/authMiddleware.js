@@ -1,5 +1,6 @@
 const projectService = require("./../services/posts/projectService");
 const articleService = require("./../services/posts/articleService");
+const Interaction = require("./../models/Interaction");
 
 async function checkOriginalPoster(req, res, next){
     const userSession = req.session.user || undefined;
@@ -52,6 +53,35 @@ function checkSessionNotExists(req, res, next){
     next();
 };
 
+async function checkSessionLiked(req, res, next) {
+    const userSession = req.session.user || undefined;
+    const postId = req.params.id
+    const path = req.path
+    const splittedPath = path.split("/");
+    const currentPath = splittedPath[1]
+
+    if(!userSession){
+        return next()
+    }
+    if(currentPath == "project"){
+        const interaction = await Interaction.selectInteraction(postId, null, null, userSession.userId)
+        if(interaction === undefined || interaction.length == 0){
+            res.locals.interaction = false;
+            return next();
+        };
+        res.locals.interaction = true;
+    }
+    if(currentPath == "article"){
+        const interaction = await Interaction.selectInteraction(null, postId, null, userSession.userId);
+        if(interaction === undefined || interaction.length == 0){
+            res.locals.interaction = null;
+            return next();
+        };
+        res.locals.interaction = true;
+    }
+    next();
+}
+
 function retrieveSession(req, res, next){
     const userSession = req.session.user || undefined;
     if(userSession) {
@@ -69,4 +99,5 @@ module.exports = {
     checkSessionExists,
     checkSessionIsAdmin,
     checkSessionNotExists, 
+    checkSessionLiked,
     retrieveSession };

@@ -7,7 +7,6 @@
         {{/each}}
         </div>
     {{/if}}
-
     {{#each article}}
         <div class="container mt-5 ">
             <!-- Post Header -->
@@ -31,17 +30,31 @@
                     </div>
                 </div>
             </div>
+            {{/each}}
 
             <!-- Post Footer -->
             <div class="row mt-4">
                 <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <form action="/posts/article/{{this.id}}/{{this.slug}}/like" method="post">
-                                <button type="submit" class="btn btn-link bi bi-hand-thumbs-up"></button>
-                            </form>
-                            <small class="text-muted">likes</small>
-                            <strong>{{this.likes_count}}</strong>
+                            {{#if interaction}}
+                                {{#each article}}
+                                    <form action="/posts/article/{{this.id}}/{{this.slug}}/like" method="post">
+                                        <button type="submit" class="btn btn-link bi bi-hand-thumbs-up-fill"></button>
+                                    </form>
+                                    <small class="text-muted">likes</small>
+                                    <strong>{{this.likes_count}}</strong>
+                                {{/each}}
+                            {{else}}
+                                {{#each article}}
+                                    <form action="/posts/article/{{this.id}}/{{this.slug}}/like" method="post">
+                                        <button type="submit" class="btn btn-link bi bi-hand-thumbs-up"></button>
+                                    </form>
+                                    <small class="text-muted">likes</small>
+                                    <strong>{{this.likes_count}}</strong>
+                                {{/each}}
+
+                            {{/if}}
                         </div>
                         <div>
                             <img src="{{  'https://via.placeholder.com/30'}}" alt="Autor" class="rounded-circle" width="30"
@@ -51,7 +64,6 @@
                 </div>
             </div>
         </div>
-    {{/each}}
 
 
 </div>
