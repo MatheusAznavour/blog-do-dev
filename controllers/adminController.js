@@ -9,7 +9,7 @@ async function dashboardPosts(req, res){
 
 async function dashboardUsers(req, res){
     const users = await adminService.getUsers(30, 0);
-    //console.log(users)
+    console.log(users)
     res.render("admin/users", {users});
 };
 
