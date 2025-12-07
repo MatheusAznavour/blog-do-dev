@@ -6,7 +6,36 @@
         </div>
     {{/if}}
 
-<h1 class="text-center">Welcome to <b>blog do dev!<b></h1>
+ 
+  
+<div class="container-fluid px-4 py-5 my-5 text-center">
+    <div class="lc-block d-block mx-auto mb-4">
+
+    </div>
+    <div class="lc-block">
+        <div editable="rich">
+
+            <h2 class="display-5 fw-bold">Welcome to blog do dev!</h2>
+
+        </div>
+    </div>
+    <div class="lc-block col-lg-6 mx-auto mb-4">
+        <div editable="rich">
+            <p class="lead ">
+                This project is a blog developed with the goal of consolidating backend knowledge. It covers various features such as session-based authentication, route security with RBAC,
+                post management, like system, image uploads, and much more! All of this is implemented with modern technologies like Express, bcrypt, Cloudinary, and Handlebars.
+            </p>
+        </div>
+    </div>
+
+    <div class="lc-block d-grid gap-2 d-sm-flex justify-content-sm-center"> 
+        <a class="btn btn-primary btn-lg px-4 gap-3" href="/posts/article/create" role="button">Create Article</a>
+        <a class="btn btn-outline-secondary btn-lg px-4" href="/posts/project/create" role="button">Create Project</a>
+    </div>
+</div>
+ 
+ 
+  
 
 <div class="container my-5">
 {{#if articles}}

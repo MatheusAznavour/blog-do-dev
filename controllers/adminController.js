@@ -21,11 +21,13 @@ async function dashboardUsersDeleteForm(req, res) {
 async function dashboardUsersGivePrivilegesForm(req, res) {
     const { id } = req.params;
     await adminService.givePrivileges(id);
+    res.redirect("/admin/users");
 };
 
 async function dashboardUsersTakePrivilegesForm(req, res) {
     const { id } = req.params;
     await adminService.takePrivileges(id);
+    res.redirect("/admin/users");
 };
 
 module.exports = {

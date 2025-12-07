@@ -42,7 +42,7 @@ function checkSessionExists(req, res, next){
     if(userSession) {
         return next();
     };
-    res.redirect("/");
+    res.redirect("/login");
 };
 
 function checkSessionNotExists(req, res, next){
@@ -66,7 +66,7 @@ async function checkSessionLiked(req, res, next) {
     if(currentPath == "project"){
         const interaction = await Interaction.selectInteraction(postId, null, null, userSession.userId)
         if(interaction === undefined || interaction.length == 0){
-            res.locals.interaction = null;
+            res.locals.interaction = false;
             return next();
         };
         res.locals.interaction = true;

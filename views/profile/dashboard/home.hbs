@@ -38,7 +38,7 @@
                             <!-- Actual action!! -->
                             <div class="d-flex align-items-center d-flex flex-row-reverse ">
                                 <a href="/posts/article/{{this.id}}/{{this.slug}}" class="btn btn-sm btn-outline-dark">Keep reading</a>
-                                <form action="/posts/article/{{this.id}}/{{this.slug}}/delete" method="post">
+                                <form action="/posts/article/{{this.id}}/{{this.slug}}/delete" method="post" style="margin: 0 10px;">
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                                 <a href="/posts/article/{{this.id}}/{{this.slug}}/edit" class="btn btn-warning">Update</a>
@@ -95,15 +95,15 @@
                         <div class="col-md-12">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <span class="text-muted">Likes: {{this.likes_count}}</span>
-                                    <strong>0</strong>
+                                    <span class="text-muted">Likes: </span>
+                                    <strong>{{this.likes_count}}</strong>
                                 </div>
                             </div>
                         </div>
                             <!-- Actual action!! -->
                             <div class="d-flex align-items-center d-flex flex-row-reverse ">
                                 <a href="/posts/project/{{this.id}}/{{this.slug}}" class="btn btn-sm btn-outline-dark">Keep reading</a>
-                                <form action="/posts/project/{{this.id}}/{{this.slug}}/delete" method="post">
+                                <form action="/posts/project/{{this.id}}/{{this.slug}}/delete" method="post" style="margin: 0 10px;">
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                                 <a href="/posts/project/{{this.id}}/{{this.slug}}/edit" class="btn btn-warning">Update</a>
