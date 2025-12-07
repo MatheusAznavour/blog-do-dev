@@ -66,7 +66,7 @@ async function checkSessionLiked(req, res, next) {
     if(currentPath == "project"){
         const interaction = await Interaction.selectInteraction(postId, null, null, userSession.userId)
         if(interaction === undefined || interaction.length == 0){
-            res.locals.interaction = false;
+            res.locals.interaction = null;
             return next();
         };
         res.locals.interaction = true;

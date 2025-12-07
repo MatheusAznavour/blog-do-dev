@@ -7,6 +7,7 @@ async function project(req, res) {
     const id = req.params.id || 0
     const project = await projectService.getProject(id);
     pj_is_done = "";
+    console.log(res.locals)
     if(project.length === 0 ){
         return res.render("posts/project/home", { error: ["Could not find a project"] });
     }

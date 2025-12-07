@@ -4,7 +4,7 @@ const upload = require("./../../middleware/multer");
 const projectController = require("./../../controllers/posts/projectContoller");
 const authMiddleware = require("./../../middleware/authMiddleware");
 
-router.get("/project/:id/:slug", projectController.project);
+router.get("/project/:id/:slug", authMiddleware.checkSessionLiked, projectController.project);
 
 router.get("/project/create", authMiddleware.checkSessionExists, projectController.createProject);
 router.post("/project/create", upload.single("image"), projectController.createProjectForm);

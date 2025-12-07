@@ -3,8 +3,6 @@ const articleHelper = require("./../../helpers/posts/articleHelper");
 
 async function article(req, res) {
     const { id, slug } = req.params;
-    console.log(res.locals)
-
     const article = await articleService.getArticle(id);
     if(!article){
         return res.render("posts/article/main", {error: ["post not found!"]})
