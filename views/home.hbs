@@ -1,10 +1,4 @@
-    {{#if error}}
-        <div class="alert alert-danger" role="alert">
-        {{#each error}}
-            {{this}}
-        {{/each}}
-        </div>
-    {{/if}}
+
 
  
   
@@ -65,6 +59,13 @@
 
 </div>
 
+<div class="container">
+    {{#if error}}
+        <div class="alert alert-success alert-dismissible">
+        <strong>Hey!</strong> {{#each error}}{{this}}{{/each}}
+        </div>
+    {{/if}}
+</div>
 
 {{#each articles}}
 

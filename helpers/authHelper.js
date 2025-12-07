@@ -13,13 +13,13 @@ function validateSigninInput(...args){
     const validation = new validator(data, rules);
 
     if(data.user_password != data.user_password_again){
-        return false;
+        return { success: false, error: ["passwords dont match"] };
     };
     if(validation.fails()){
         console.log("Validation failled!", validation.errors.all());
-        return false;
+        return { success: false, error: validation.errors.all() };
     } else {
-        return true;     
+        return { success: true};    
     };
 };
 

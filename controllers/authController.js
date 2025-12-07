@@ -9,8 +9,8 @@ async function signinForm(req, res){
     const { user_name, user_email, user_password, user_password_again } = req.body;
     
     const isValid = authHelper.validateSigninInput({user_name, user_email, user_password, user_password_again})
-    if(!isValid){
-        res.render("auth/signin", {error: ["Form data send format is invalid!"]});
+    if(!isValid.success){
+        res.render("auth/signin", {error: isValid.error}); 
         return;
     };
 

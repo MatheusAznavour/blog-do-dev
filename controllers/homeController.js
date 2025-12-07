@@ -19,7 +19,7 @@ async function home(req, res) {
         }
 
         if(articles.length === 0){
-            return res.render("home", {error: ["Could not find any post"]})
+            return res.render("home", {error: ["Be the first to post an article :)"]})
         }
         return res.render("home", { articles, paginationValues });
     }
@@ -35,11 +35,11 @@ async function home(req, res) {
         }
 
         if(projects.length === 0){
-            return res.render("home", {error: ["Could not find any post"]})
+            return res.render("home", {error: ["Be the first to post a project :)"]})
         }
         return res.render("home", { projects, paginationValues});
     }
-    res.render("home", {error: ["Could not find any post"]})
+    res.render("home", {error: ["Be the first to make a post :)"]})
 };
 
 module.exports = { home };
