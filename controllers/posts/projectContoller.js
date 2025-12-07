@@ -45,7 +45,7 @@ async function createProjectForm(req, res){
         await projectService.createProject(title, description, repository_link, deployed_link, is_done, url, opId);
     });
 
-    res.redirect("/posts/project/create");
+    res.redirect("/profile/dashboard");
 };
 
 async function editProject(req, res) {

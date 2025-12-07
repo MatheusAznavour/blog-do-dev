@@ -24,7 +24,7 @@ async function createArticleForm(req, res){
     }
     await articleService.createArticle(title, content, opId);
 
-    res.redirect("/posts/article/create")
+    res.redirect("/profile/dashboard");
 }
 
 async function updateArticle(req, res){
