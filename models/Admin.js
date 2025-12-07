@@ -8,8 +8,9 @@ async function selectAll(limit, offset) {
         u.email,
         u.image_link,
         u.created_at,
-        u.updated_at
-        FROM users u
+        u.updated_at,
+        r.name as role
+        FROM users u LEFT JOIN roles r ON u.id=r.users_id
         ORDER by u.id DESC
         LIMIT ? offset ?;
     `;
@@ -26,4 +27,33 @@ async function deleteUser(id) {
     return rows;
 };
 
-module.exports = { selectAll, deleteUser };
+async function insertPrivileges(id) {
+    const query = `
+    INSERT INTO roles 
+        (
+        name, 
+        users_id
+        ) VALUES (
+        "admin",
+        ?
+        );
+    `;
+
+    const [rows] = await pool.query(query, [id]);
+    return rows;
+};
+
+async function dropPrivileges(id) {
+    const query = `
+    DELETE FROM roles
+        WHERE users_id=?;
+    `;
+    const [rows] = await pool.query(query, [id]);
+    return rows;
+};
+
+module.exports = { 
+    selectAll, 
+    deleteUser,
+    insertPrivileges,
+    dropPrivileges };

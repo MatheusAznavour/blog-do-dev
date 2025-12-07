@@ -9,4 +9,16 @@ async function deleteUser(id) {
     return await Admin.deleteUser(id);
 };
 
-module.exports = { getUsers, deleteUser };
+async function givePrivileges(id) {
+    await Admin.insertPrivileges(id);
+};
+
+async function takePrivileges(id) {
+    await Admin.dropPrivileges(id);
+};
+
+module.exports = { 
+    getUsers, 
+    deleteUser,
+    givePrivileges,
+    takePrivileges };

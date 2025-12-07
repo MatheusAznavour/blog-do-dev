@@ -9,7 +9,6 @@ async function dashboardPosts(req, res){
 
 async function dashboardUsers(req, res){
     const users = await adminService.getUsers(30, 0);
-    console.log(users)
     res.render("admin/users", {users});
 };
 
@@ -17,10 +16,22 @@ async function dashboardUsersDeleteForm(req, res) {
     const { id } = req.params;
     await adminService.deleteUser(id);
     res.redirect("/admin/users");
-};;
+};
+
+async function dashboardUsersGivePrivilegesForm(req, res) {
+    const { id } = req.params;
+    await adminService.givePrivileges(id);
+};
+
+async function dashboardUsersTakePrivilegesForm(req, res) {
+    const { id } = req.params;
+    await adminService.takePrivileges(id);
+};
 
 module.exports = {
     dashboardPosts,
     dashboardUsers,
-    dashboardUsersDeleteForm
+    dashboardUsersDeleteForm,
+    dashboardUsersGivePrivilegesForm,
+    dashboardUsersTakePrivilegesForm
 };

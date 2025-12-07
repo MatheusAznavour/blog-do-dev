@@ -25,7 +25,12 @@
 
                     <p><strong>Created at:</strong> <span class="text-muted">{{this.created_at}}</span></p>
                     <p><strong>Updated at:</strong> <span class="text-muted">{{this.updated_at}}</span></p>
-                    <form action="/admin/users/{{this.id}}/delete" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
+                    <form action="/admin/users/{{this.id}}/delete" method="post" style="margin-bottom: 10px;"><button type="submit" class="btn btn-danger">Delete</button></form>
+                    {{#if role}}
+                        <form action="/admin/users/{{this.id}}/take-privileges" method="post"><button type="submit" class="btn btn-danger">Remove Admin privileges</button></form>
+                    {{else}}
+                        <form action="/admin/users/{{this.id}}/give-privileges" method="post"><button type="submit" class="btn btn-warning">Give Admin privileges</button></form>
+                    {{/if}}
                 </div>
             </div>
         </div>
