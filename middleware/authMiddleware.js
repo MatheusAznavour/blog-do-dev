@@ -15,7 +15,7 @@ async function checkOriginalPoster(req, res, next){
     if(currentPath == "project"){
         const project = await projectService.getProjectByUserAndId(postId, userSession.userId);
         if(userSession.role == "admin"){
-            await res.redirect("/admin/posts");
+            res.redirect("/admin/posts");
             return next();
         };
         if(project === undefined || project.length == 0){
@@ -25,8 +25,8 @@ async function checkOriginalPoster(req, res, next){
     if(currentPath == "article"){
         const article = await articleService.getProjectByUserAndId(postId, userSession.userId);
         if(userSession.role == "admin"){
-            await res.redirect("/admin/posts");
-            return next()
+            res.redirect("/admin/posts");
+            return next();
         };
         if(article === undefined || article.length == 0){
             return res.redirect("/");
