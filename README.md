@@ -14,7 +14,7 @@ Este projeto é um **blog** desenvolvido com o objetivo de consolidar conhecimen
 ## 🔧 **Tecnologias Usadas**
 
 * **Express**: Framework minimalista para construção de APIs e gerenciamento de rotas.
-* **Express**: Sistema de gerenciamento de banco de dados relacional robusto e amplamente utilizado.
+* **MySQL**: Sistema de gerenciamento de banco de dados relacional robusto e amplamente utilizado.
 * **bcrypt**: Criptografia de senhas para garantir a segurança dos dados dos usuários.
 * **Handlebars**: Template engine para gerar views dinâmicas no lado do servidor.
 * **Cloudinary**: Serviço de upload e gerenciamento de imagens.
